@@ -24,6 +24,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`requests` (
   `id_request` INT NOT NULL AUTO_INCREMENT,
+  `id_user` INT NOT NULL,
   `id_document` INT NOT NULL,
   `id_category` INT NOT NULL,
   `id_dependecy` INT NOT NULL DEFAULT 0,
@@ -32,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`requests` (
   `short_name` VARCHAR(255) NULL,
   `slug` VARCHAR(255) NULL,
   `folio` VARCHAR(55) NULL,
-  `description` VARCHAR(255) NULL,
-  `keywords` TEXT NULL,
+  `description` TEXT NULL,
+  `keywords` VARCHAR(255) NULL,
   `date_published` DATE NOT NULL,
   `date_limit` DATE NULL,
   `date_last_modified` DATE NULL,
