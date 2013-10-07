@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`documents` (
   `keywords` TEXT NULL,
   `date_create` DATE NOT NULL,
   `page_numbers` VARCHAR(10) NULL,
+  `file_url` VARCHAR(255) NOT NULL,
+  `file_type` VARCHAR(45) NOT NULL DEFAULT 'pdf',
   PRIMARY KEY (`id_document`))
 ENGINE = InnoDB;
 
@@ -61,6 +63,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`organizations` (
   `id_organization` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
+  `short_name` VARCHAR(255) NULL,
   `slug` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
   `address` VARCHAR(255) NULL,
@@ -92,8 +95,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`areas` (
   `id_area` INT NOT NULL AUTO_INCREMENT,
   `id_organization` INT NOT NULL,
-  `name` VARCHAR(100) NULL,
-  `slug` VARCHAR(100) NULL,
+  `name` VARCHAR(255) NULL,
+  `short_name` VARCHAR(255) NULL,
+  `slug` VARCHAR(255) NULL,
   `description` VARCHAR(255) NULL,
   PRIMARY KEY (`id_area`))
 ENGINE = InnoDB;
@@ -114,8 +118,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`dependencies` (
   `id_dependecy` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `slug` VARCHAR(100) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `short_name` VARCHAR(255) NULL,
+  `slug` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
   `address` VARCHAR(100) NULL,
   `type` VARCHAR(10) NOT NULL DEFAULT 'federal',
@@ -226,6 +231,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`cumplimiento` (
   `date` DATE NULL,
   `description` VARCHAR(255) NULL COMMENT 'Modalidad de entrega de la información',
   PRIMARY KEY (`id_cumplimiento`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`keywords`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`keywords` (
+  `id_keyword` INT NOT NULL AUTO_INCREMENT,
+  `value` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id_keyword`))
 ENGINE = InnoDB;
 
 

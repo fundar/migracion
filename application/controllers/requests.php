@@ -54,6 +54,33 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	public function documents($id_request = false) {
+		if($id_request) {
+			$crud = new grocery_CRUD();
+			
+			$crud->set_theme('twitter-bootstrap');
+			
+			$crud->set_table('documents');
+			$crud->set_subject('Documents');
+			
+			$crud->unset_columns('slug');
+			$crud->fields('name', 'slug', 'description');
+			$crud->change_field_type('slug','invisible');
+			
+			$crud->callback_before_insert(function($post_array) {
+				$post_array['slug'] = slug($post_array['name']);
+				
+				return $post_array;
+			});
+			
+			$output = $crud->render();
+
+			$this->_example_output($output);
+		} else {
+			
+		}
+	}
+	
 	public function categories() {
 		$crud = new grocery_CRUD();
 		
@@ -86,7 +113,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Dependencies');
 		
 		$crud->unset_columns('slug');
-		$crud->fields('name', 'slug', 'description', 'address', 'type');
+		$crud->fields('name', 'slug', 'description', 'short_name', 'address', 'type');
 		$crud->change_field_type('slug','invisible');
 		$crud->field_type('type', 'dropdown', array('federal' => 'Federal', 'estatal' => 'Estatal', 'municipal' => 'Municipal'));
 		
@@ -111,7 +138,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Organizations');
 		
 		$crud->unset_columns('slug');
-		$crud->fields('name', 'slug', 'description', 'address');
+		$crud->fields('name', 'slug', 'short_name', 'description', 'address');
 		$crud->change_field_type('slug','invisible');
 		
 		$crud->callback_before_insert(function($post_array) {
@@ -138,7 +165,7 @@ class Requests extends CI_Controller {
 		$crud->set_relation('id_organization','organizations','name');
 		
 		$crud->unset_columns('slug');
-		$crud->fields('name', 'id_organization', 'slug', 'description');
+		$crud->fields('name', 'id_organization', 'slug', 'short_name', 'description');
 		$crud->change_field_type('slug','invisible');
 		
 		

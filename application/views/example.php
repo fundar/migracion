@@ -40,6 +40,7 @@ a:hover
 		-->
 		
 		<a href='<?php echo site_url('requests/index')?>'>Requests</a> |
+		<a href='<?php echo site_url('requests/documents')?>'>Documents</a> |
 		<a href='<?php echo site_url('requests/categories')?>'>Categories</a> |
 		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencies</a> |
 		<a href='<?php echo site_url('requests/organizations')?>'>Organizations</a> |
