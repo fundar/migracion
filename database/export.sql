@@ -13,26 +13,32 @@ CREATE TABLE IF NOT EXISTS `mydb`.`documents` (
   `name` VARCHAR(45) NOT NULL,
   `short_name` VARCHAR(45) NULL,
   `keywords` TEXT NULL,
+  `date_create` DATE NOT NULL,
+  `page_numbers` VARCHAR(10) NULL,
   PRIMARY KEY (`id_document`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`inquiries`
+-- Table `mydb`.`requests`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`inquiries` (
-  `id_inquirie` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `mydb`.`requests` (
+  `id_request` INT NOT NULL AUTO_INCREMENT,
   `id_document` INT NOT NULL,
   `id_category` INT NOT NULL,
+  `id_dependecy` INT NOT NULL DEFAULT 0,
+  `other_dependency` VARCHAR(100) NULL,
   `name` VARCHAR(255) NULL,
   `short_name` VARCHAR(255) NULL,
   `slug` VARCHAR(255) NULL,
+  `folio` VARCHAR(55) NULL,
   `description` VARCHAR(255) NULL,
   `keywords` TEXT NULL,
   `date_published` DATE NOT NULL,
   `date_limit` DATE NULL,
   `date_last_modified` DATE NULL,
-  PRIMARY KEY (`id_inquirie`))
+  `date_answer` DATE NULL,
+  PRIMARY KEY (`id_request`))
 ENGINE = InnoDB;
 
 
@@ -100,6 +106,126 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(32) NOT NULL,
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP);
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`dependencies`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`dependencies` (
+  `id_dependecy` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `slug` VARCHAR(100) NOT NULL,
+  `description` VARCHAR(255) NULL,
+  `address` VARCHAR(100) NULL,
+  `type` VARCHAR(10) NOT NULL DEFAULT 'federal',
+  PRIMARY KEY (`id_dependecy`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`aditional_information`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`aditional_information` (
+  `id_aditional` INT NOT NULL AUTO_INCREMENT,
+  `id_request` INT NOT NULL,
+  `date_request` DATE NULL,
+  `request` TEXT NULL,
+  `response` TEXT NULL,
+  `date_response` DATE NULL,
+  `date_limit` DATE NULL,
+  PRIMARY KEY (`id_aditional`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`responses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`responses` (
+  `id_response` INT NOT NULL AUTO_INCREMENT,
+  `id_request` INT NOT NULL,
+  `id_type_document` INT NULL,
+  `question` VARCHAR(255) NULL,
+  `id_type_answer` INT NULL,
+  `answer` TEXT NULL,
+  `quality` INT NULL COMMENT '1 Completa\n2 Legible\n3 Formato Abierto\n\n4 Incompleta\n5 Ilegible\n6 No es lo solicita\n7 En formato no accesible',
+  `information_delivery` INT NOT NULL DEFAULT 3 COMMENT '1 Consulta directa\n2 Formato fisico\n3 Formato electronico',
+  `process_ifai` INT NOT NULL DEFAULT 1 COMMENT '1 En proceso\n2 Concluida\n3 No aplica',
+  PRIMARY KEY (`id_response`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`documents_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`documents_types` (
+  `id_type_document` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id_type_document`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`answers_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`answers_types` (
+  `id_type_answer` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id_type_answer`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`reviews`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`reviews` (
+  `id_review` INT NOT NULL AUTO_INCREMENT,
+  `id_request` INT NOT NULL,
+  `date` DATE NULL,
+  `date_limit` DATE NULL,
+  `description` VARCHAR(255) NULL COMMENT 'Acto que se recurrió',
+  PRIMARY KEY (`id_review`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`allegations`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`allegations` (
+  `id_allegation` INT NOT NULL AUTO_INCREMENT,
+  `id_request` INT NOT NULL,
+  `allegation` TEXT NULL,
+  `description` VARCHAR(255) NULL COMMENT 'A que ponencia fue enviada',
+  `date` DATE NULL,
+  PRIMARY KEY (`id_allegation`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`resolutions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`resolutions` (
+  `id_resolution` INT NOT NULL AUTO_INCREMENT,
+  `id_request` INT NOT NULL,
+  `date_notification` DATE NULL,
+  `date` DATE NULL,
+  `resource` VARCHAR(45) NULL COMMENT 'Ponencia que procesó el recurso',
+  `resource_number` VARCHAR(45) NULL,
+  `type_resolutions` INT NULL COMMENT '1 Confirma\n2 Modifica\n3 Revoca\n4 Desecha\n5 Sobresee',
+  PRIMARY KEY (`id_resolution`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`cumplimiento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`cumplimiento` (
+  `id_cumplimiento` INT NOT NULL AUTO_INCREMENT,
+  `id_request` INT NOT NULL,
+  `status` TINYINT(1) NOT NULL DEFAULT false,
+  `date` DATE NULL,
+  `description` VARCHAR(255) NULL COMMENT 'Modalidad de entrega de la información',
+  PRIMARY KEY (`id_cumplimiento`))
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
