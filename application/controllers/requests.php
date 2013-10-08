@@ -51,8 +51,10 @@ class Requests extends CI_Controller {
 		
 		$crud->display_as('keywords2', 'Document Keywords');
 		$crud->field_type('keywords2', 'multiselect', $myarray);
-		$crud->field_type('keywords',  'multiselect', $myarray);
-		$crud->callback_before_insert(array($this, 'saveRequest'));
+		$crud->field_type('keywords',  'multiselect', $myarray);	
+		
+		$crud->callback_before_insert(array($this, 'saveDocument'));
+		
 		//$post_array['slug'] = slug($post_array['name']);
 		
 		$output = $crud->render();
@@ -60,6 +62,31 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	function saveDocument($post_array) {
+		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
+			$this->load->model('migracion_model');
+			$id_document = $this->migracion_model->saveRequest($post_array);
+			
+			die(var_dump($id_document));
+		}
+		
+		unset($post_array['keywords2']);
+
+		return $post_array;
+	}
+		
+	function saveKeywords($post_array, $primary_key) {
+		$user_logs_insert = array(
+			"user_id" => $primary_key,
+			"created" => date('Y-m-d H:i:s'),
+			"last_update" => date('Y-m-d H:i:s')
+		);
+	 
+		$this->db->insert('user_logs',$user_logs_insert);
+	 
+		return true;
+	}
+
 	public function documents($id_request = false) {
 		$crud = new grocery_CRUD();
 		
