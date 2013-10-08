@@ -28,13 +28,12 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_document', 'id_category', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
-		
-		$crud->display_as('id_document', 'Document');
-		$crud->set_field_upload('id_document','assets/uploads/files');
+		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'keywords2', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
 		
 		$crud->change_field_type('slug','invisible');
 
+		$crud->display_as('id_document', 'Document');
+		$crud->set_field_upload('id_document','assets/uploads/files');
 		
 		$crud->display_as('id_category', 'Category');
 		$crud->set_relation('id_category','categories','name');
@@ -42,12 +41,19 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_dependecy', 'Dependecy');
 		$crud->set_relation('id_dependecy', 'dependencies', 'name');
 		
+		// multiple keywords
+		$this->load->model('migracion_model');
+		$keywords = $this->migracion_model->get_keywords();
 		
-		$crud->callback_before_insert(function($post_array) {
-			$post_array['slug'] = slug($post_array['name']);
-			
-			return $post_array;
-		});
+		foreach ($keywords->result() as $row) {
+			$myarray[$row->id_keyword] = $row->value;
+		}
+		
+		$crud->display_as('keywords2', 'Document Keywords');
+		$crud->field_type('keywords2', 'multiselect', $myarray);
+		$crud->field_type('keywords',  'multiselect', $myarray);
+		$crud->callback_before_insert(array($this, 'saveRequest'));
+		//$post_array['slug'] = slug($post_array['name']);
 		
 		$output = $crud->render();
 
@@ -55,29 +61,23 @@ class Requests extends CI_Controller {
 	}
 	
 	public function documents($id_request = false) {
-		if($id_request) {
-			$crud = new grocery_CRUD();
-			
-			$crud->set_theme('twitter-bootstrap');
-			
-			$crud->set_table('documents');
-			$crud->set_subject('Documents');
-			
-			$crud->fields('name', 'short_name', 'keywords');
-			$crud->change_field_type('slug','invisible');
-			
-			$crud->callback_before_insert(function($post_array) {
-				$post_array['slug'] = slug($post_array['name']);
-				
-				return $post_array;
-			});
-			
-			$output = $crud->render();
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('documents');
+		$crud->set_subject('Documents');
+		
+		$crud->fields('name', 'short_name', 'keywords', 'file_url');
+		$crud->change_field_type('slug','invisible');
+		
+		$crud->display_as('file_url', 'Document');
+		$crud->set_field_upload('file_url','assets/uploads/files');
 
-			$this->_example_output($output);
-		} else {
-			
-		}
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
 	}
 	
 	public function categories() {
@@ -204,7 +204,6 @@ class Requests extends CI_Controller {
 		$crud->change_field_type('email','email');
 		$crud->change_field_type('pwd','password');
 
-		
 		$crud->callback_before_insert(function($post_array) {
 			///Password
 			$key = 'super-secret-key';
