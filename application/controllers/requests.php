@@ -28,7 +28,7 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'keywords2', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
+		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
 		
 		$crud->change_field_type('slug','invisible');
 
@@ -49,13 +49,9 @@ class Requests extends CI_Controller {
 			$myarray[$row->id_keyword] = $row->value;
 		}
 		
-		$crud->display_as('keywords2', 'Document Keywords');
-		$crud->field_type('keywords2', 'multiselect', $myarray);
 		$crud->field_type('keywords',  'multiselect', $myarray);	
 		
 		$crud->callback_before_insert(array($this, 'saveDocument'));
-		
-		//$post_array['slug'] = slug($post_array['name']);
 		
 		$output = $crud->render();
 
@@ -65,10 +61,14 @@ class Requests extends CI_Controller {
 	function saveDocument($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
+			
+			//falta guardar el documentos en la BD
 			$id_document = $this->migracion_model->saveRequest($post_array);
 			
 			die(var_dump($id_document));
 		}
+		
+		$post_array['slug'] = slug($post_array['name']);
 		
 		unset($post_array['keywords2']);
 
