@@ -63,8 +63,7 @@ class Requests extends CI_Controller {
 			$crud->set_table('documents');
 			$crud->set_subject('Documents');
 			
-			$crud->unset_columns('slug');
-			$crud->fields('name', 'slug', 'description');
+			$crud->fields('name', 'short_name', 'keywords');
 			$crud->change_field_type('slug','invisible');
 			
 			$crud->callback_before_insert(function($post_array) {
