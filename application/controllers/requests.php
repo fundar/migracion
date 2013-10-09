@@ -41,7 +41,7 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_dependecy', 'Dependecy');
 		$crud->set_relation('id_dependecy', 'dependencies', 'name');
 		
-		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit', 'keywords');
+		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
 			
 		// multiple keywords
 		$this->load->model('migracion_model');
@@ -51,7 +51,7 @@ class Requests extends CI_Controller {
 			$myarray[$row->id_keyword] = $row->value;
 		}
 		
-		$crud->field_type('keywords',  'multiselect', $myarray);	
+		$crud->field_type('keywords',  'multiselect', $myarray);
 		
 		$crud->callback_before_insert(array($this, 'saveDocument'));
 		$crud->callback_after_insert(array($this, 'saveKeywordsRequest'));
@@ -62,12 +62,9 @@ class Requests extends CI_Controller {
 	}
 	
 	function saveKeywordsRequest($post_array, $primary_key) {
-		//Save keywords request
-		
-		die(var_dump($post_array));
-		
+		//Save keywords request		
 		$this->load->model('migracion_model');
-		$this->migracion_model->saveKeywordsRequest($post_array, $primary_key);
+		$this->migracion_model->saveKeywordsRequest($_POST["keywords"], $primary_key);
 			 
 		return true;
 	}
@@ -82,6 +79,8 @@ class Requests extends CI_Controller {
 			$post_array['id_document'] = $id_document;
 		}
 		
+		unset($post_array['keywords']);
+
 		$post_array['slug']     = slug($post_array['name']);
 		$post_array['keywords'] = "";
 		

@@ -33,11 +33,8 @@ class migracion_Model extends CI_Model  {
 			
 			$this->db->insert('keywords2documents', $keyword_insert);
 		}
-		
-		
-		$result["id_document"] = $id_document;
 
-		return $result;
+		return $id_document;
 	}
 	
 	public function saveKeywordsRequest($post_array, $primary_key) {
