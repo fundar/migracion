@@ -41,37 +41,50 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_dependecy', 'Dependecy');
 		$crud->set_relation('id_dependecy', 'dependencies', 'name');
 		
+		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit', 'keywords');
+			
 		// multiple keywords
 		$this->load->model('migracion_model');
 		$keywords = $this->migracion_model->get_keywords();
 		
-		foreach ($keywords->result() as $row) {
+		foreach($keywords->result() as $row) {
 			$myarray[$row->id_keyword] = $row->value;
 		}
 		
 		$crud->field_type('keywords',  'multiselect', $myarray);	
 		
 		$crud->callback_before_insert(array($this, 'saveDocument'));
+		$crud->callback_after_insert(array($this, 'saveKeywordsRequest'));
 		
 		$output = $crud->render();
 
 		$this->_example_output($output);
 	}
 	
+	function saveKeywordsRequest($post_array, $primary_key) {
+		//Save keywords request
+		
+		die(var_dump($post_array));
+		
+		$this->load->model('migracion_model');
+		$this->migracion_model->saveKeywordsRequest($post_array, $primary_key);
+			 
+		return true;
+	}
+
 	function saveDocument($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
 			
-			//falta guardar el documentos en la BD
+			//Save document and keywords in database
 			$id_document = $this->migracion_model->saveRequest($post_array);
 			
-			die(var_dump($id_document));
+			$post_array['id_document'] = $id_document;
 		}
 		
-		$post_array['slug'] = slug($post_array['name']);
+		$post_array['slug']     = slug($post_array['name']);
+		$post_array['keywords'] = "";
 		
-		unset($post_array['keywords2']);
-
 		return $post_array;
 	}
 		

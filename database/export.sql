@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`documents` (
   `id_document` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `short_name` VARCHAR(45) NULL,
-  `keywords` TEXT NULL,
   `date_create` DATE NOT NULL,
   `page_numbers` VARCHAR(10) NULL,
   `file_url` VARCHAR(255) NOT NULL,
@@ -241,6 +240,24 @@ CREATE TABLE IF NOT EXISTS `mydb`.`keywords` (
   `id_keyword` INT NOT NULL AUTO_INCREMENT,
   `value` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_keyword`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`keywords2requests`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`keywords2requests` (
+  `id_keyword` INT NOT NULL,
+  `id_request` INT NOT NULL)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`keywords2documents`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`keywords2documents` (
+  `id_keyword` INT NOT NULL,
+  `id_document` INT NOT NULL)
 ENGINE = InnoDB;
 
 
