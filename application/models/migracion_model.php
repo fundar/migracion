@@ -50,4 +50,15 @@ class migracion_Model extends CI_Model  {
 		
 		return true;
 	}
+	
+	public function getUrlDocument($id_document) {
+		$query = $this->db->get_where('documents', array('id_document' => $id_document));
+		$row   = $query->row(0);
+		
+		if(isset($row->file_url)) {
+			return $row->file_url;
+		} else {
+			return false;
+		}
+	}
 }

@@ -28,12 +28,21 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
+		$crud->columns('name', 'short_name', 'folio', 'id_category', 'id_document', 'id_dependecy', 'description', 'date_published' , 'date_limit');
 		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
 		
 		$crud->change_field_type('slug','invisible');
-
+		
 		$crud->display_as('id_document', 'Document');
 		$crud->set_field_upload('id_document','assets/uploads/files');
+		
+		$action = $this->uri->segment(3);
+		
+		if($action == "add" or $action == "edit") {
+			
+		} else {
+			$crud->set_relation('id_document', 'documents', 'file_url');
+		}
 		
 		$crud->display_as('id_category', 'Category');
 		$crud->set_relation('id_category','categories','name');
@@ -61,6 +70,18 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	function showUrlDocument($value, $row) {
+		$this->load->model('migracion_model');
+		$file_url = $this->migracion_model->getUrlDocument($row->id_document);
+		
+		if($file_url) {
+		 return site_url('demo/action/action_photos').'?country='.$file_url;
+			return "<a href='".site_url('assets/uploads/files/' . $file_url)."'>$file_url</a>";
+		}  else {
+			return "No data";
+		}
+	}
+	
 	function saveKeywordsRequest($post_array, $primary_key) {
 		//Save keywords request		
 		$this->load->model('migracion_model');
@@ -86,19 +107,7 @@ class Requests extends CI_Controller {
 		
 		return $post_array;
 	}
-		
-	function saveKeywords($post_array, $primary_key) {
-		$user_logs_insert = array(
-			"user_id" => $primary_key,
-			"created" => date('Y-m-d H:i:s'),
-			"last_update" => date('Y-m-d H:i:s')
-		);
-	 
-		$this->db->insert('user_logs',$user_logs_insert);
-	 
-		return true;
-	}
-
+	
 	public function documents($id_request = false) {
 		$crud = new grocery_CRUD();
 		
@@ -113,6 +122,60 @@ class Requests extends CI_Controller {
 		$crud->display_as('file_url', 'Document');
 		$crud->set_field_upload('file_url','assets/uploads/files');
 
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
+	public function aditional_information() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('aditional_information');
+		$crud->set_subject('Aditional information');
+		
+		$crud->unset_columns('slug');
+		
+		$crud->fields('id_request', 'date_request', 'request', 'response', 'date_response', 'date_limit');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
+	
+	public function responses() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('responses');
+		$crud->set_subject('Responses');
+		
+		$crud->unset_columns('slug');
+		
+		$crud->fields('id_request', 'id_type_document', 'question', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
+		
+		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
+		$crud->field_type('process_ifai', 'dropdown', array(1 => 'Yes', 2 => 'No'));
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('id_quality', 'Quality');
+		$crud->set_relation('id_quality','quality','name');
+		
+		$crud->display_as('id_type_document', 'Type Document');
+		$crud->set_relation('id_type_document','documents_types','name');
+		
+		$crud->display_as('id_type_answer', 'Type Answer');
+		$crud->set_relation('id_type_answer','answers_types','name');
+		
 		
 		$output = $crud->render();
 

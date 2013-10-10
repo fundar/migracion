@@ -40,12 +40,14 @@ a:hover
 		-->
 		
 		<a href='<?php echo site_url('requests/index')?>'>Requests</a> |
+		<a href='<?php echo site_url('requests/aditional_information')?>'>Aditional information</a> |
+		<a href='<?php echo site_url('requests/responses')?>'>Responses</a> |
 		<a href='<?php echo site_url('requests/documents')?>'>Documents</a> |
 		<a href='<?php echo site_url('requests/categories')?>'>Categories</a> |
 		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencies</a> |
-		<a href='<?php echo site_url('requests/organizations')?>'>Organizations</a> |
-		<a href='<?php echo site_url('requests/areas')?>'>Areas</a> |
-		<a href='<?php echo site_url('requests/users')?>'>Users</a> |
+		<!-- <a href='<?php echo site_url('requests/organizations')?>'>Organizations</a> | -->
+		<!-- <a href='<?php echo site_url('requests/areas')?>'>Areas</a> | -->
+		<!-- <a href='<?php echo site_url('requests/users')?>'>Users</a> | -->
 	</div>
 	<div style='height:20px;'></div>  
     <div>
