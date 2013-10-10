@@ -1,0 +1,51 @@
+Circulares 
+Reglamentaciones 
+Protocolos 
+Planes 
+Directrices 
+Presupuesto 
+Manuales 
+Capacitaciones/Profesionalización de funcionarios
+Leyes 
+Convenios de Colaboración 
+Informes 
+Programas 
+Lineamientos 
+Guías 
+Registros 
+Recursos Públicos y Presupuestales 
+Oficio
+
+insert into documents_types (name) values ('Circulares');
+insert into documents_types (name) values ('Reglamentaciones');
+insert into documents_types (name) values ('Protocolos');
+insert into documents_types (name) values ('Planes');
+insert into documents_types (name) values ('Directrices');
+insert into documents_types (name) values ('Presupuesto');
+insert into documents_types (name) values ('Manuales');
+insert into documents_types (name) values ('Capacitaciones/Profesionalización de funcionarios');
+insert into documents_types (name) values ('Leyes');
+insert into documents_types (name) values ('Convenios de Colaboración ');
+insert into documents_types (name) values ('Informes');
+insert into documents_types (name) values ('Programas');
+insert into documents_types (name) values ('Lineamientos');
+insert into documents_types (name) values ('Guías');
+insert into documents_types (name) values ('Registros');
+insert into documents_types (name) values ('Recursos Públicos y Presupuestales');
+insert into documents_types (name) values ('Oficio');
+
+insert into quality (name) values ('Completa');
+insert into quality (name) values ('Legible');
+insert into quality (name) values ('Formato Abierto');
+insert into quality (name) values ('Incompleta');
+insert into quality (name) values ('Ilegible');
+insert into quality (name) values ('En formato no accesible');
+insert into quality (name) values ('No es lo solicitado');
+ 
+Completa	  
+Legible	  
+Formato Abierto	  
+Incompleta
+Ilegible
+En formato no accesible
+No es lo solicitado
