@@ -29,7 +29,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Requests');
 		
 		$crud->columns('name', 'short_name', 'folio', 'id_category', 'id_document', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit');
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
+		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'id_dependecy', 'question', 'description', 'keywords', 'date_published' , 'date_limit');
 		
 		$crud->change_field_type('slug','invisible');
 		
