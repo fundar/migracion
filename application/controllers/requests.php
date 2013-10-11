@@ -164,6 +164,8 @@ class Requests extends CI_Controller {
 		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
 		
 		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
+		
+		$crud->display_as('process_ifai', 'Con proceso ante IFAI u órgano garante');
 		$crud->field_type('process_ifai', 'dropdown', array(1 => 'Proceso', 2 => 'Concluido'));
 		
 		$crud->display_as('id_request', 'Request');
