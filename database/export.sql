@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`requests` (
   `short_name` VARCHAR(255) NULL,
   `slug` VARCHAR(255) NULL,
   `folio` VARCHAR(55) NULL,
+  `question` TEXT NULL,
   `description` TEXT NULL,
   `keywords` VARCHAR(255) NULL,
   `date_published` DATE NOT NULL,
@@ -148,8 +149,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`responses` (
   `id_response` INT NOT NULL AUTO_INCREMENT,
   `id_request` INT NOT NULL,
-  `id_type_document` INT NULL,
-  `question` VARCHAR(255) NULL,
   `id_type_answer` INT NULL,
   `answer` TEXT NULL,
   `id_quality` INT NULL COMMENT '1 Completa\n2 Legible\n3 Formato Abierto\n\n4 Incompleta\n5 Ilegible\n6 No es lo solicita\n7 En formato no accesible',
@@ -216,6 +215,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`resolutions` (
   `date` DATE NULL,
   `resource` VARCHAR(45) NULL COMMENT 'Ponencia que procesó el recurso',
   `resource_number` VARCHAR(45) NULL,
+  `file_url` VARCHAR(255) NULL,
+  `id_document` INT NULL,
   PRIMARY KEY (`id_resolution`))
 ENGINE = InnoDB;
 
@@ -278,6 +279,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`resolutions_type` (
   `id_resolution_type` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
   PRIMARY KEY (`id_resolution_type`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`responses2documentstypes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`responses2documentstypes` (
+  `id_response` INT NOT NULL,
+  `id_type_document` INT NOT NULL)
 ENGINE = InnoDB;
 
 

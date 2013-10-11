@@ -175,7 +175,9 @@ class Requests extends CI_Controller {
 		$crud->set_relation('id_quality','quality','name');
 		
 		$crud->display_as('id_type_document', 'Type Document');
-		$crud->set_relation('id_type_document','documents_types','name');
+		$crud->set_relation_n_n('id_type_document', 'responses2documentstypes', 'documents_types', 'id_response', 'id_type_document', 'name');
+		 
+		//$crud->set_relation('id_type_document','documents_types','name');
 		
 		$crud->display_as('id_type_answer', 'Type Answer');
 		$crud->set_relation('id_type_answer','answers_types','name');
