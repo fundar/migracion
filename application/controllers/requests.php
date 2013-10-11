@@ -28,21 +28,16 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->columns('name', 'short_name', 'folio', 'id_category', 'id_document', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit');
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'id_dependecy', 'question', 'description', 'keywords', 'date_published' , 'date_limit');
+		$crud->columns('name', 'short_name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit');
+		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'keywords', 'date_published' , 'date_limit');
 		
 		$crud->change_field_type('slug','invisible');
+		$crud->change_field_type('id_document','invisible');
 		
-		$crud->display_as('id_document', 'Document');
-		$crud->set_field_upload('id_document','assets/uploads/files');
+		$crud->display_as('file_url', 'Document');
+		$crud->set_field_upload('file_url','assets/uploads/files');
 		
 		$action = $this->uri->segment(3);
-		
-		if($action == "add" or $action == "edit") {
-			
-		} else {
-			$crud->set_relation('id_document', 'documents', 'file_url');
-		}
 		
 		$crud->display_as('description', 'Summary');
 		
