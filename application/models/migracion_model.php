@@ -37,6 +37,21 @@ class migracion_Model extends CI_Model  {
 		return $id_document;
 	}
 	
+	public function saveDocument($post_array) {
+		//Save document
+		$document_insert = array(
+			"name"        => $post_array["name"],
+			"short_name"  => $post_array["short_name"],
+			"date_create" => date('Y-m-d H:i:s'),
+			"file_url"    => $post_array["id_document"]
+		);
+	 
+		$this->db->insert('documents', $document_insert);
+		$id_document = $this->db->insert_id();
+		
+		return $id_document;
+	}
+	
 	public function saveKeywordsRequest($post_array, $primary_key) {
 		//Save keyword request
 		foreach($post_array["keywords"] as $keyword) {

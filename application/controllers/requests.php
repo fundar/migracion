@@ -71,19 +71,7 @@ class Requests extends CI_Controller {
 
 		$this->_example_output($output);
 	}
-	
-	function showUrlDocument($value, $row) {
-		$this->load->model('migracion_model');
-		$file_url = $this->migracion_model->getUrlDocument($row->id_document);
 		
-		if($file_url) {
-		 return site_url('demo/action/action_photos').'?country='.$file_url;
-			return "<a href='".site_url('assets/uploads/files/' . $file_url)."'>$file_url</a>";
-		}  else {
-			return "No data";
-		}
-	}
-	
 	function saveKeywordsRequest($post_array, $primary_key) {
 		//Save keywords request		
 		$this->load->model('migracion_model');
@@ -217,7 +205,13 @@ class Requests extends CI_Controller {
 		$crud->set_table('resolutions');
 		$crud->set_subject('Resolutions');
 		
-		$crud->fields('id_request', 'date_notification', 'date', 'resource', 'resource_number', 'id_type_resolution');
+		$crud->columns('id_request', 'date_notification', 'date', 'resource', 'resource_number', 'id_type_resolution', 'file_url');
+		$crud->fields('id_request', 'date_notification', 'date', 'resource', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
+		
+		$crud->change_field_type('id_document','invisible');
+		
+		$crud->display_as('file_url', 'Document');
+		$crud->set_field_upload('file_url','assets/uploads/files');
 		
 		$crud->display_as('id_request', 'Request');
 		$crud->set_relation('id_request','requests','name');
@@ -225,9 +219,24 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_type_resolution', 'Sentido de la resolución');
 		$crud->set_relation('id_type_resolution','resolutions_type', 'name');
 		
+		$crud->callback_before_insert(array($this, 'saveResolution'));
+		
 		$output = $crud->render();
 
 		$this->_example_output($output);
+	}
+	
+	function saveResolution($post_array) {
+		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
+			$this->load->model('migracion_model');
+			
+			//Save document and keywords in database
+			$id_document = $this->migracion_model->saveDocument($post_array);
+			
+			$post_array['id_document'] = $id_document;
+		}
+		
+		return $post_array;
 	}
 	
 	public function allegations() {

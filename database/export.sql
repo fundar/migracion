@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`requests` (
   `date_limit` DATE NULL,
   `date_last_modified` DATE NULL,
   `date_answer` DATE NULL,
+  `file_url` VARCHAR(255) NULL,
   PRIMARY KEY (`id_request`))
 ENGINE = InnoDB;
 
