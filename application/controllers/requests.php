@@ -28,7 +28,7 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->columns('name', 'short_name', 'folio', 'id_category', 'id_document', 'id_dependecy', 'description', 'date_published' , 'date_limit');
+		$crud->columns('name', 'short_name', 'folio', 'id_category', 'id_document', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit');
 		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'id_dependecy', 'description', 'keywords', 'date_published' , 'date_limit');
 		
 		$crud->change_field_type('slug','invisible');
@@ -159,7 +159,7 @@ class Requests extends CI_Controller {
 		
 		$crud->unset_columns('slug');
 		
-		$crud->fields('id_request', 'id_type_document', 'question', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
+		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
 		
 		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
 		$crud->field_type('process_ifai', 'dropdown', array(1 => 'Yes', 2 => 'No'));
