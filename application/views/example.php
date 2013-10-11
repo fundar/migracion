@@ -45,8 +45,10 @@ a:hover
 		<a href='<?php echo site_url('requests/reviews')?>'>Reviews</a> |
 		<a href='<?php echo site_url('requests/allegations')?>'>Allegations</a> |
 		<a href='<?php echo site_url('requests/resolutions')?>'>Resolutions</a> |
-		<a href='<?php echo site_url('requests/cumplimiento')?>'>Cumplimiento</a>
+		<a href='<?php echo site_url('requests/cumplimiento')?>'>Cumplimiento</a> |
 		
+		
+		<a href='<?php echo site_url('requests/keywords')?>'>Keywords</a> |
 		<a href='<?php echo site_url('requests/documents')?>'>Documents</a> |
 		<a href='<?php echo site_url('requests/categories')?>'>Categories</a> |
 		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencies</a> |

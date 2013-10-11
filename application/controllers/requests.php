@@ -44,6 +44,8 @@ class Requests extends CI_Controller {
 			$crud->set_relation('id_document', 'documents', 'file_url');
 		}
 		
+		$crud->display_as('description', 'Summary');
+		
 		$crud->display_as('id_category', 'Category');
 		$crud->set_relation('id_category','categories','name');
 		
@@ -265,13 +267,29 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	public function keywords() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('keywords');
+		$crud->set_subject('keywords');
+
+		$crud->fields('value');
+		$crud->display_as('value', 'Name');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
 	public function categories() {
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
 		
-		$crud->set_table('categories');
-		$crud->set_subject('Categories');
+		$crud->set_table('keywords');
+		$crud->set_subject('Keywords');
 		
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'description');
