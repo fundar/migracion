@@ -182,6 +182,48 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	public function cumplimiento() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('cumplimiento');
+		$crud->set_subject('Cumplimiento');
+		
+		$crud->fields('id_request', 'status', 'date', 'description');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('status', 'Se Cumplio');
+		$crud->field_type('status', 'dropdown', array(1 => 'Yes', 2 => 'No'));
+
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
+	public function resolutions() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('resolutions');
+		$crud->set_subject('Resolutions');
+		
+		$crud->fields('id_request', 'date_notification', 'date', 'resource', 'resource_number', 'id_type_resolution');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('id_type_resolution', 'Sentido de la resolución');
+		$crud->set_relation('id_type_resolution','resolutions_type', 'name');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
 	public function categories() {
 		$crud = new grocery_CRUD();
 		

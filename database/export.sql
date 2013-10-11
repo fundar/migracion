@@ -211,11 +211,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`resolutions` (
   `id_resolution` INT NOT NULL AUTO_INCREMENT,
   `id_request` INT NOT NULL,
+  `id_type_resolution` INT NOT NULL COMMENT '1 Confirma\n2 Modifica\n3 Revoca\n4 Desecha\n5 Sobresee',
   `date_notification` DATE NULL,
   `date` DATE NULL,
   `resource` VARCHAR(45) NULL COMMENT 'Ponencia que procesó el recurso',
   `resource_number` VARCHAR(45) NULL,
-  `type_resolutions` INT NULL COMMENT '1 Confirma\n2 Modifica\n3 Revoca\n4 Desecha\n5 Sobresee',
   PRIMARY KEY (`id_resolution`))
 ENGINE = InnoDB;
 
@@ -268,6 +268,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`quality` (
   `id_quality` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   PRIMARY KEY (`id_quality`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`resolutions_type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`resolutions_type` (
+  `id_resolution_type` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  PRIMARY KEY (`id_resolution_type`))
 ENGINE = InnoDB;
 
 

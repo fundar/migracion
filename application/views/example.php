@@ -42,6 +42,9 @@ a:hover
 		<a href='<?php echo site_url('requests/index')?>'>Requests</a> |
 		<a href='<?php echo site_url('requests/aditional_information')?>'>Aditional information</a> |
 		<a href='<?php echo site_url('requests/responses')?>'>Responses</a> |
+		<a href='<?php echo site_url('requests/resolutions')?>'>Resolutions</a> |
+		<a href='<?php echo site_url('requests/cumplimiento')?>'>Cumplimiento</a> |
+		
 		<a href='<?php echo site_url('requests/documents')?>'>Documents</a> |
 		<a href='<?php echo site_url('requests/categories')?>'>Categories</a> |
 		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencies</a> |
