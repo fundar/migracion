@@ -224,6 +224,47 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	public function allegations() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('allegations');
+		$crud->set_subject('Allegations');
+		
+		$crud->fields('id_request', 'allegation', 'description', 'date');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('description', '¿A qué ponencia fue enviada?');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
+	
+	public function reviews() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('reviews');
+		$crud->set_subject('Reviews');
+		
+		$crud->fields('id_request', 'date', 'date_limit', 'description');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('description', 'Acto que se recurrió');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
 	public function categories() {
 		$crud = new grocery_CRUD();
 		
