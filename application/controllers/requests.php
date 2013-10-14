@@ -156,7 +156,7 @@ class Requests extends CI_Controller {
 		$crud->set_relation('id_request','requests','name');
 		
 		$crud->display_as('id_quality', 'Quality');
-		$crud->set_relation('id_quality','quality','name');
+		$crud->set_relation_n_n('id_quality', 'responses2quality', 'quality', 'id_response', 'id_quality', 'name');
 		
 		$crud->display_as('id_type_document', 'Type Document');
 		$crud->set_relation_n_n('id_type_document', 'responses2documentstypes', 'documents_types', 'id_response', 'id_type_document', 'name');
@@ -286,6 +286,21 @@ class Requests extends CI_Controller {
 
 		$crud->fields('value');
 		$crud->display_as('value', 'Name');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
+	public function quality() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('quality');
+		$crud->set_subject('Quality');
+
+		$crud->fields('name');
 		
 		$output = $crud->render();
 

@@ -152,7 +152,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`responses` (
   `id_request` INT NOT NULL,
   `id_type_answer` INT NULL,
   `answer` TEXT NULL,
-  `id_quality` INT NULL COMMENT '1 Completa\n2 Legible\n3 Formato Abierto\n\n4 Incompleta\n5 Ilegible\n6 No es lo solicita\n7 En formato no accesible',
   `information_delivery` INT NOT NULL DEFAULT 3 COMMENT '1 Consulta directa\n2 Formato fisico\n3 Formato electronico',
   `process_ifai` INT NOT NULL DEFAULT 1 COMMENT '1 En proceso\n2 Concluida\n3 No aplica',
   PRIMARY KEY (`id_response`))
@@ -289,6 +288,15 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`responses2documentstypes` (
   `id_response` INT NOT NULL,
   `id_type_document` INT NOT NULL)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`responses2quality`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`responses2quality` (
+  `id_response` INT NOT NULL,
+  `id_quality` INT NOT NULL)
 ENGINE = InnoDB;
 
 
