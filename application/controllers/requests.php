@@ -39,6 +39,7 @@ class Requests extends CI_Controller {
 		
 		$action = $this->uri->segment(3);
 		
+		$crud->display_as('name', 'Title');
 		$crud->display_as('description', 'Summary');
 		
 		$crud->display_as('id_category', 'Category');
