@@ -39,21 +39,21 @@ a:hover
 		<a href='<?php echo site_url('examples/multigrids')?>'>Multigrid [BETA]</a>
 		-->
 		
-		<a href='<?php echo site_url('requests/index')?>'>Requests</a> |
-		<a href='<?php echo site_url('requests/aditional_information')?>'>Aditional information</a> |
-		<a href='<?php echo site_url('requests/responses')?>'>Responses</a> |
-		<a href='<?php echo site_url('requests/reviews')?>'>Reviews</a> |
-		<a href='<?php echo site_url('requests/allegations')?>'>Allegations</a> |
-		<a href='<?php echo site_url('requests/resolutions')?>'>Resolutions</a> |
+		<a href='<?php echo site_url('requests/index')?>'>Solicitudes</a> |
+		<a href='<?php echo site_url('requests/aditional_information')?>'>Información Adicional</a> |
+		<a href='<?php echo site_url('requests/responses')?>'>Respuestas</a> |
+		<a href='<?php echo site_url('requests/reviews')?>'>Revisiones</a> |
+		<a href='<?php echo site_url('requests/allegations')?>'>Alegatos</a> |
+		<a href='<?php echo site_url('requests/resolutions')?>'>Resoluciones</a> |
 		<a href='<?php echo site_url('requests/cumplimiento')?>'>Cumplimiento</a>
 		
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
 		<a href='<?php echo site_url('requests/keywords')?>'>Keywords</a> |
-		<a href='<?php echo site_url('requests/quality')?>'>Quality</a> |
-		<a href='<?php echo site_url('requests/documents')?>'>Documents</a> |
-		<a href='<?php echo site_url('requests/categories')?>'>Categories</a> |
-		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencies</a> |
+		<a href='<?php echo site_url('requests/quality')?>'>Calidad de respuestas</a> |
+		<a href='<?php echo site_url('requests/documents')?>'>Documentos</a> |
+		<a href='<?php echo site_url('requests/categories')?>'>Categorias</a> |
+		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencias</a> |
 		<!-- <a href='<?php echo site_url('requests/organizations')?>'>Organizations</a> | -->
 		<!-- <a href='<?php echo site_url('requests/areas')?>'>Areas</a> | -->
 		<!-- <a href='<?php echo site_url('requests/users')?>'>Users</a> | -->
