@@ -312,8 +312,8 @@ class Requests extends CI_Controller {
 		
 		$crud->set_theme('twitter-bootstrap');
 		
-		$crud->set_table('keywords');
-		$crud->set_subject('Keywords');
+		$crud->set_table('categories');
+		$crud->set_subject('Categories');
 		
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'description');
