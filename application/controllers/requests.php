@@ -28,8 +28,8 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->columns('name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit');
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'keywords', 'date_published' , 'date_limit');
+		$crud->columns('name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
+		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'keywords', 'date_published' , 'date_limit', 'id_organization');
 		
 		$crud->change_field_type('slug','invisible');
 		$crud->change_field_type('id_document','invisible');
@@ -47,6 +47,9 @@ class Requests extends CI_Controller {
 		
 		$crud->display_as('id_dependecy', 'Dependecy');
 		$crud->set_relation('id_dependecy', 'dependencies', 'name');
+		
+		$crud->display_as('id_organization', 'Organizations');
+		$crud->set_relation('id_organization', 'organizations', 'name');
 		
 		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
 			
