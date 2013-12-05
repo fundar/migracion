@@ -48,7 +48,7 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_dependecy', 'Dependecy');
 		$crud->set_relation('id_dependecy', 'dependencies', 'name');
 		
-		$crud->display_as('id_organization', 'Organizations');
+		$crud->display_as('id_organization', 'Organization');
 		$crud->set_relation('id_organization', 'organizations', 'name');
 		
 		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
