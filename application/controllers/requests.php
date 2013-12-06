@@ -296,6 +296,22 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	public function acts() {
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('turn_acts');
+		$crud->set_subject('Acto que se recurre');
+
+		$crud->fields('name');
+		$crud->display_as('name', 'Acto que se recurre');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
 	public function quality() {
 		$crud = new grocery_CRUD();
 		
