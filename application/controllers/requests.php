@@ -384,7 +384,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Organizations');
 		
 		$crud->unset_columns('slug');
-		$crud->fields('name', 'slug', 'short_name', 'description', 'address');
+		$crud->fields('name', 'slug', 'short_name', 'description', 'address', 'email', 'telephone', 'website');
 		$crud->change_field_type('slug','invisible');
 		
 		$crud->callback_before_insert(function($post_array) {
