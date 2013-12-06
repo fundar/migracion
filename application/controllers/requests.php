@@ -267,10 +267,13 @@ class Requests extends CI_Controller {
 		$crud->set_table('reviews');
 		$crud->set_subject('Reviews');
 		
-		$crud->fields('id_request', 'date', 'date_limit', 'description');
+		$crud->fields('id_request', 'date', 'date_limit', 'description', 'id_act');
 		
 		$crud->display_as('id_request', 'Request');
 		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('id_act', 'Acto que se recurrió');
+		$crud->set_relation('id_act','turn_acts','name');
 		
 		$crud->display_as('description', 'Acto que se recurrió');
 		
