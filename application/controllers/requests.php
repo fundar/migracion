@@ -204,8 +204,8 @@ class Requests extends CI_Controller {
 		$crud->set_table('resolutions');
 		$crud->set_subject('Resolutions');
 		
-		$crud->columns('id_request', 'date_notification', 'date', 'resource', 'resource_number', 'id_type_resolution', 'file_url');
-		$crud->fields('id_request', 'date_notification', 'date', 'resource', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
+		$crud->columns('id_request', 'date_notification', 'date', 'resource_number', 'id_type_resolution', 'file_url');
+		$crud->fields('id_request', 'date_notification', 'date', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
 		
 		$crud->change_field_type('id_document','invisible');
 		
