@@ -148,7 +148,7 @@ class Requests extends CI_Controller {
 		
 		$crud->unset_columns('slug');
 		
-		$crud->fields('id_response', 'id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
+		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
 		
 		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
 		
