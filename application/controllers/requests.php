@@ -479,10 +479,12 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*
 	public function test() {
 		$this->load->model('migracion_model');
 			
 		//insert keywords - relation
 		$id_document = $this->migracion_model->keywords();
 	}
+	*/
 }

@@ -77,6 +77,7 @@ class migracion_Model extends CI_Model  {
 		}
 	}
 	
+	/*
 	public function keywords() {
 		$this->db->select('id_request, keywords');
 		$requests = $this->db->get("requests");
@@ -98,4 +99,5 @@ class migracion_Model extends CI_Model  {
 		
 		die("Ok");
 	}
+	*/
 }
