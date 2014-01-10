@@ -273,7 +273,12 @@ class Requests extends CI_Controller {
 		$crud->set_relation('id_request','requests','name');
 		
 		$crud->display_as('id_act', 'Acto que se recurrió');
+		$crud->set_relation_n_n('id_act', 'acts2reviews', 'turn_acts', 'id_review', 'id_act', 'name');
+		
+		/*
+		$crud->display_as('id_act', 'Acto que se recurrió');
 		$crud->set_relation('id_act','turn_acts','name');
+		*/
 		
 		$output = $crud->render();
 
