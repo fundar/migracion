@@ -29,7 +29,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Requests');
 		
 		$crud->columns('name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'keywords', 'date_published' , 'date_limit', 'id_organization');
+		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'id_organization');
 		
 		$crud->change_field_type('slug','invisible');
 		$crud->change_field_type('id_document','invisible');
@@ -52,8 +52,13 @@ class Requests extends CI_Controller {
 		$crud->set_relation('id_organization', 'organizations', 'name');
 		
 		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
+		
+		//keywords relations
+		$crud->display_as('id_keyword', 'Keywords');
+		$crud->set_relation_n_n('id_keyword', 'keywords2requests', 'keywords', 'id_request', 'id_keyword', 'value');
 			
 		// multiple keywords
+		/*
 		$this->load->model('migracion_model');
 		$keywords = $this->migracion_model->get_keywords();
 		
@@ -62,9 +67,10 @@ class Requests extends CI_Controller {
 		}
 		
 		$crud->field_type('keywords',  'multiselect', $myarray);
+		*/
 		
 		$crud->callback_before_insert(array($this, 'saveDocument'));
-		$crud->callback_after_insert(array($this, 'saveKeywordsRequest'));
+		//$crud->callback_after_insert(array($this, 'saveKeywordsRequest'));
 		
 		$output = $crud->render();
 
