@@ -83,7 +83,7 @@ class migracion_Model extends CI_Model  {
 		
 		foreach($requests->result() as $row) {
 			$id_request = $row->id_request;
-			$keywords   = split(',', $row->keywords);
+			$keywords   = explode(',', $row->keywords);
 			die(var_dump($keywords));
 		}
 		
