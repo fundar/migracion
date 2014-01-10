@@ -76,4 +76,11 @@ class migracion_Model extends CI_Model  {
 			return false;
 		}
 	}
+	
+	public function keywords() {
+		$this->db->select('id_request, keywords');
+		$requests = $this->db->get("requests");
+		
+		die(var_dump($requests));
+	}
 }
