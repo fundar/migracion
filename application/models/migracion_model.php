@@ -81,6 +81,11 @@ class migracion_Model extends CI_Model  {
 		$this->db->select('id_request, keywords');
 		$requests = $this->db->get("requests");
 		
+		foreach($requests->result() as $row) {
+			die(var_dump($row));
+			$myarray[$row->id_keyword] = $row->value;
+		}
+		
 		die(var_dump($requests));
 	}
 }
