@@ -57,7 +57,7 @@ class migracion_Model extends CI_Model  {
 		foreach($post_array["keywords"] as $keyword) {
 			$keyword_insert = array(
 				"id_keyword"   => $keyword,
-				"id_document"  => $primary_key
+				"id_request"  => $primary_key
 			);
 			
 			$this->db->insert('keywords2requests', $keyword_insert);
