@@ -84,9 +84,18 @@ class migracion_Model extends CI_Model  {
 		foreach($requests->result() as $row) {
 			$id_request = $row->id_request;
 			$keywords   = explode(',', $row->keywords);
-			die(var_dump($keywords));
+			
+			foreach($keywords as $keyword) {
+				$keyword_insert = array(
+					"id_keyword"   => $keyword,
+					"id_request"  => $id_request
+				);
+				
+				$this->db->insert('keywords2requests', $keyword_insert);
+			}
+			
 		}
 		
-		die(var_dump($requests));
+		die("Ok");
 	}
 }
