@@ -20,6 +20,41 @@ class Requests extends CI_Controller {
 		$this->load->view('example.php',$output);
 	}
 	
+	/*Users*/
+	private function isUser($admin = false) {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = $_SESSION['user_id'];
+			
+			$this->load->model('migracion_model');
+			$user = $this->migracion_model->getUser($_SESSION['user_id']);
+			
+			if($user) {
+				return $user;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
+	public function login() {
+		if($this->isUser()) {
+			
+		} else {
+			$this->load->view('login.php');
+		}
+	}
+	
+	public function logout() {
+		session_unset(); 
+		session_destroy();
+		
+		header('Location:' . get("webURL"));
+	}
+	
+	
+	
 	public function index() {
 		$crud = new grocery_CRUD();
 		
@@ -56,19 +91,7 @@ class Requests extends CI_Controller {
 		//keywords relations
 		$crud->display_as('id_keyword', 'Keywords');
 		$crud->set_relation_n_n('id_keyword', 'keywords2requests', 'keywords', 'id_request', 'id_keyword', 'value');
-			
-		// multiple keywords
-		/*
-		$this->load->model('migracion_model');
-		$keywords = $this->migracion_model->get_keywords();
-		
-		foreach($keywords->result() as $row) {
-			$myarray[$row->id_keyword] = $row->value;
-		}
-		
-		$crud->field_type('keywords',  'multiselect', $myarray);
-		*/
-		
+
 		$crud->callback_before_insert(array($this, 'saveDocument'));
 		//$crud->callback_after_insert(array($this, 'saveKeywordsRequest'));
 		
@@ -76,15 +99,7 @@ class Requests extends CI_Controller {
 
 		$this->_example_output($output);
 	}
-		
-	function saveKeywordsRequest($post_array, $primary_key) {
-		//Save keywords request		
-		$this->load->model('migracion_model');
-		$this->migracion_model->saveKeywordsRequest($_POST["keywords"], $primary_key);
-			 
-		return true;
-	}
-
+	
 	function saveDocument($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
