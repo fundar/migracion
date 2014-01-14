@@ -93,7 +93,7 @@ class Requests extends CI_Controller {
 		$crud->set_relation_n_n('id_keyword', 'keywords2requests', 'keywords', 'id_request', 'id_keyword', 'value');
 
 		$crud->callback_before_insert(array($this, 'saveDocument'));
-		//$crud->callback_before_insert(array($this, 'getFolioID'));
+		$crud->callback_before_insert(array($this, 'getFolioID'));
 		
 		$output = $crud->render();
 
@@ -118,7 +118,8 @@ class Requests extends CI_Controller {
 		return $post_array;
 	}
 	
-	function getFolioID($post_array) {
+	public function getFolioID($post_array) {
+		die("ok");
 		die(var_dump($post_array));
 	}
 	
