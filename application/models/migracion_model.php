@@ -92,8 +92,10 @@ class migracion_Model extends CI_Model  {
 	
 	/*Find folio*/
 	public function getFolio($folio = "") {
-		$query = $this->db->get_where('requests', array('folio' => '0610400019211'));
-		$count = $this->db->count_all_results();
+		$query = $this->db->query("SELECT * FROM requests where folio = '0610400019211'");
+		//$query = $this->db->get_where('requests', array('folio' => ''));
+		$row   = $query->row(0);
+		die(var_dump($row));
 		
 		die(var_dump($count));
 		return $count;
