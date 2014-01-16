@@ -97,7 +97,6 @@ class migracion_Model extends CI_Model  {
 		$number = $row->number + 1;
 		$id     = trim($folio) . "-p" . $number;
 		
-		die(var_dump($id));
 		return $id;
 	}
 	
