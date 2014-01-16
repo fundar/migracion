@@ -64,10 +64,11 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Requests');
 		
 		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
-		$crud->fields('name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'id_organization');
+		$crud->fields('id', 'name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'id_organization');
 		
 		$crud->change_field_type('slug','invisible');
 		$crud->change_field_type('id_document','invisible');
+		$crud->change_field_type('id','invisible');
 		
 		$crud->display_as('file_url', 'Document');
 		$crud->set_field_upload('file_url','assets/uploads/files');
@@ -118,12 +119,15 @@ class Requests extends CI_Controller {
 		return $post_array;
 	}
 	
+	/*Find count records = folio*/
 	public function getFolioID($post_array) {
-		/*Find count records = folio*/
 		$this->load->model('migracion_model');
-		$count = $this->migracion_model->getFolio($post_array['folio']);
+		$id = $this->migracion_model->getCountFolio($post_array['folio']);
 		
-		die(var_dump($count));
+		$post_array['folio'] = trim($post_array['folio']);
+		$post_array['id']    = $id;
+		
+		return $post_array;
 	}
 	
 	public function documents($id_request = false) {

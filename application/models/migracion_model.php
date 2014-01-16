@@ -91,13 +91,11 @@ class migracion_Model extends CI_Model  {
 	}
 	
 	/*Find folio*/
-	public function getFolio($folio = "") {
-		$query = $this->db->query("SELECT count(*) as number FROM requests where folio = '06104000191'");
-		$row   = $query->row(0);
-		die(var_dump($row));
-		
-		die(var_dump($count));
-		return $count;
+	public function getCountFolio($folio = "") {
+		$query = $this->db->query("SELECT count(*) as number FROM requests where folio = '" . trim($folio) . "'");
+		$row   = $query->row(0);	
+		die(var_dump($row->number + 1));
+		return $row->number + 1;
 	}
 	
 	
