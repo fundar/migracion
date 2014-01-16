@@ -119,7 +119,6 @@ class Requests extends CI_Controller {
 	}
 	
 	public function getFolioID($post_array) {
-		die("ok");
 		die(var_dump($post_array));
 	}
 	

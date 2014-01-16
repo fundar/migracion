@@ -90,7 +90,7 @@ class migracion_Model extends CI_Model  {
 		}
 	}
 	
-	/*
+	/* cambio de estructura de keywords a la tabla de relación
 	public function keywords() {
 		$this->db->select('id_request, keywords');
 		$requests = $this->db->get("requests");
