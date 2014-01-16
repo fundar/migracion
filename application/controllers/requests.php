@@ -63,12 +63,13 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
-		$crud->fields('id', 'name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'id_organization');
+		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
+		$crud->fields('id', 'name', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
 		
 		$crud->change_field_type('slug','invisible');
 		$crud->change_field_type('id_document','invisible');
 		$crud->change_field_type('id','invisible');
+		$crud->change_field_type('date_last_modified','invisible');
 		
 		$crud->display_as('file_url', 'Document');
 		$crud->set_field_upload('file_url','assets/uploads/files');
@@ -124,8 +125,9 @@ class Requests extends CI_Controller {
 		$this->load->model('migracion_model');
 		$id = $this->migracion_model->getIDFolio($post_array['folio']);
 		
-		$post_array['folio'] = trim($post_array['folio']);
-		$post_array['id']    = $id;
+		$post_array['folio']              = trim($post_array['folio']);
+		$post_array['id']                 = $id;
+		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
 		
 		return $post_array;
 	}
