@@ -90,6 +90,16 @@ class migracion_Model extends CI_Model  {
 		}
 	}
 	
+	/*Find folio*/
+	public function getFolio($folio = "") {
+		$query = $this->db->get_where('requests', array('folio' => '0610400019211'));
+		$count = $this->db->count_all_results();
+		
+		die(var_dump($count));
+		return $count;
+	}
+	
+	
 	/* cambio de estructura de keywords a la tabla de relación
 	public function keywords() {
 		$this->db->select('id_request, keywords');
