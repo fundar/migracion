@@ -122,7 +122,7 @@ class Requests extends CI_Controller {
 	/*Find count records = folio*/
 	public function getFolioID($post_array) {
 		$this->load->model('migracion_model');
-		$id = $this->migracion_model->getCountFolio($post_array['folio']);
+		$id = $this->migracion_model->getIDFolio($post_array['folio']);
 		
 		$post_array['folio'] = trim($post_array['folio']);
 		$post_array['id']    = $id;
