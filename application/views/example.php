@@ -62,7 +62,7 @@ a:hover
 		<!-- <a href='<?php echo site_url('requests/users')?>'>Users</a> | -->
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
-			| <a href='<?php echo site_url('requests/logout')?>'>logout</a>
+			| <a href='<?php echo site_url('requests/logout')?>'>Logout</a>
 		<?php } ?>
 	</div>
 	<div style='height:20px;'></div>  

@@ -71,6 +71,10 @@ class Requests extends CI_Controller {
 				$user = $this->migracion_model->isUser(trim(str_replace("'","",$_POST["email"])), md5($_POST["pwd"]));
 				
 				if($user) {
+					if($user->type == "admin") {
+						$_SESSION['admin'] = true;
+					}
+					
 					$_SESSION['user_id'] = $user->id_user;
 					$_SESSION['email'] = $user->email;
 					
