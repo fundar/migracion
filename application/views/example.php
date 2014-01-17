@@ -61,6 +61,10 @@ a:hover
 		<!-- <a href='<?php echo site_url('requests/areas')?>'>Areas</a> | -->
 		<!-- <a href='<?php echo site_url('requests/users')?>'>Users</a> | -->
 		
+		<?php if(isset($_SESSION['admin'])) { ?>
+			| <a href='<?php echo site_url('requests/users')?>'>Users</a>
+		<?php } ?>
+		
 		<?php if(isset($_SESSION['user_id'])) { ?>
 			| <a href='<?php echo site_url('requests/logout')?>'>Logout</a>
 		<?php } ?>
