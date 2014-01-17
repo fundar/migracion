@@ -74,7 +74,7 @@ class Requests extends CI_Controller {
 				if($user) {
 					$_SESSION['user_id'] = $user->id_user;
 					$_SESSION['email'] = $user->email;
-					die(var_dump($_SESSION));
+					
 					header('Location: http://migracion.fundarlabs.mx/requests/index');
 				}
 				
