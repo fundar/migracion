@@ -21,7 +21,7 @@ class Requests extends CI_Controller {
 	}
 	
 	/*Users*/
-	private function isUser($redirect = true) {
+	private function isUser($redirect = true, $admin = false) {
 		if(isset($_SESSION['user_id'])) {
 			$user_id = $_SESSION['user_id'];
 			
@@ -29,6 +29,18 @@ class Requests extends CI_Controller {
 			$user = $this->migracion_model->getUser($_SESSION['user_id']);
 			
 			if($user) {
+				if($admin) {
+					if($user->type == "admin") {
+						return $user;
+					} else {
+						if($redirect) {
+							header('Location: http://migracion.fundarlabs.mx/requests/index');
+						}
+						
+						return false;
+					}
+				}
+				
 				return $user;
 			} else {
 				if($redirect) {
@@ -476,6 +488,10 @@ class Requests extends CI_Controller {
 	}
 	
 	public function users() {
+		if($this->isUser(true, true)) {
+			$admin = true;
+		}
+		
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
