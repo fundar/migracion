@@ -24,7 +24,8 @@ a:hover
 </head>
 <body>
     <div>
-		<?php die(var_dump($error)); ?>
+		<?php if($error) echo "<p>" . $error . "</p>";?>
+		
 		<form action="" method="POST">
 			<p>email: <input type="text" name="email" id="email" /></p>
 			<p>password: <input type="password" name="pwd" id="pwd" /></p>
