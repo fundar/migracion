@@ -465,7 +465,10 @@ class Requests extends CI_Controller {
 	
 	
 	public function organizations() {
-		$user = $this->isUser();
+		if($this->isUser(true, true)) {
+			$admin = true;
+		}
+		
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -489,7 +492,10 @@ class Requests extends CI_Controller {
 	}
 	
 	public function areas() {
-		$user = $this->isUser();
+		if($this->isUser(true, true)) {
+			$admin = true;
+		}
+		
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
