@@ -24,7 +24,7 @@ class Requests extends CI_Controller {
 	
 	/*Users*/
 	private function isUser($redirect = true, $admin = false) {
-		die(var_dump($_SESSION));
+		
 		if(isset($_SESSION['user_id'])) {
 			$user_id = $_SESSION['user_id'];
 			
@@ -74,7 +74,7 @@ class Requests extends CI_Controller {
 				if($user) {
 					$_SESSION['user_id'] = $user->id_user;
 					$_SESSION['email'] = $user->email;
-					
+					die(var_dump($_SESSION));
 					header('Location: http://migracion.fundarlabs.mx/requests/index');
 				}
 				
