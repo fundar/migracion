@@ -92,7 +92,7 @@ class migracion_Model extends CI_Model  {
 	public function isUser($email = "", $password = "") {
 		$query = $this->db->get_where('users', array('email' => $email, 'pwd' => $password));
 		$row   = $query->row(0);
-		die(var_dump($row));
+		
 		if(isset($row->id_user)) {
 			return $row;
 		} else {

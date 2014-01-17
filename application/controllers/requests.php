@@ -62,14 +62,23 @@ class Requests extends CI_Controller {
 		if($this->isUser(false)) {
 			header('Location: http://migracion.fundarlabs.mx/requests/index');
 		} else {
+			$vars = false;
+			
 			if(isset($_POST["submit"])) {
 				$this->load->model('migracion_model');
 				$user = $this->migracion_model->isUser(trim(str_replace("'","",$_POST["email"])), md5($_POST["pwd"]));
 				
-				$_SESSION['user_id'] = 1;
+				if($user) {
+					$_SESSION['user_id'] = $user->id_user;
+					$_SESSION['email'] = $user->email;
+					
+					header('Location: http://migracion.fundarlabs.mx/requests/index');
+				}
+				
+				$vars["error"] = "datos incorrectos";
 			}
 			
-			$this->load->view('login.php');
+			$this->load->view('login.php', $vars);
 		}
 	}
 	
