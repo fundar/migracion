@@ -108,8 +108,6 @@ class Requests extends CI_Controller {
 		$crud->fields('id', 'name', 'id_user', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
 		$crud->order_by('date_published','desc');
 		   
-		//$crud->set_relation('id_user','users','email');
-		   
 		$crud->change_field_type('slug','invisible');
 		$crud->change_field_type('id_document','invisible');
 		$crud->change_field_type('id','invisible');
@@ -141,6 +139,8 @@ class Requests extends CI_Controller {
 
 		$crud->callback_before_insert(array($this, 'saveDocument'));
 		$crud->callback_before_insert(array($this, 'getFolioID'));
+		
+		$crud->set_relation('id_user','users','email');
 		
 		$output = $crud->render();
 
