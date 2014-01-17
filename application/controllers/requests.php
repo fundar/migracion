@@ -62,7 +62,7 @@ class Requests extends CI_Controller {
 		if($this->isUser(false)) {
 			header('Location: http://migracion.fundarlabs.mx/requests/index');
 		} else {
-			$vars = false;
+			$vars["error"] = false;
 			
 			if(isset($_POST["submit"])) {
 				$this->load->model('migracion_model');
