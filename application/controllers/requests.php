@@ -31,17 +31,24 @@ class Requests extends CI_Controller {
 			if($user) {
 				return $user;
 			} else {
+				header('Location: http://migracion.fundarlabs.mx/requests/login');
 				return false;
 			}
 		} else {
+			header('Location: http://migracion.fundarlabs.mx/requests/login');
 			return false;
 		}
 	}
 	
 	public function login() {
 		if($this->isUser()) {
-			
+			header('Location: http://migracion.fundarlabs.mx/requests/index');
 		} else {
+			if(isset($_POST["submit"])) {
+				die(var_dump($_POST));
+				$_SESSION['user_id'] = 1;
+			}
+			
 			$this->load->view('login.php');
 		}
 	}
