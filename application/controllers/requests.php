@@ -14,6 +14,8 @@ class Requests extends CI_Controller {
 		$this->load->helper('date');
 		
 		$this->load->library('grocery_CRUD');
+		
+		session_start();
 	}
 
 	public function _example_output($output = null) {
@@ -22,6 +24,7 @@ class Requests extends CI_Controller {
 	
 	/*Users*/
 	private function isUser($redirect = true, $admin = false) {
+		die(var_dump($_SESSION));
 		if(isset($_SESSION['user_id'])) {
 			$user_id = $_SESSION['user_id'];
 			
