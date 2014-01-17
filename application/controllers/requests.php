@@ -140,8 +140,6 @@ class Requests extends CI_Controller {
 		$crud->callback_before_insert(array($this, 'saveDocument'));
 		$crud->callback_before_insert(array($this, 'getFolioID'));
 		
-		$crud->set_relation('id_user','users','email');
-		
 		$output = $crud->render();
 
 		$this->_example_output($output);
