@@ -131,7 +131,7 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_organization', 'Organization');
 		$crud->set_relation('id_organization', 'organizations', 'name');
 		
-		$crud->required_fields('name', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
+		$crud->required_fields('name', 'folio', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
 		
 		//keywords relations
 		$crud->display_as('id_keyword', 'Keywords');
@@ -154,11 +154,8 @@ class Requests extends CI_Controller {
 			
 			$post_array['id_document'] = $id_document;
 		}
-		
-		unset($post_array['keywords']);
 
 		$post_array['slug']     = slug($post_array['name']);
-		$post_array['keywords'] = "";
 		
 		return $post_array;
 	}
