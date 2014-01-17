@@ -21,7 +21,7 @@ class Requests extends CI_Controller {
 	}
 	
 	/*Users*/
-	private function isUser($admin = false) {
+	private function isUser($redirect = true) {
 		if(isset($_SESSION['user_id'])) {
 			$user_id = $_SESSION['user_id'];
 			
@@ -31,17 +31,23 @@ class Requests extends CI_Controller {
 			if($user) {
 				return $user;
 			} else {
-				header('Location: http://migracion.fundarlabs.mx/requests/login');
+				if($redirect) {
+					header('Location: http://migracion.fundarlabs.mx/requests/login');
+				}
+				
 				return false;
 			}
 		} else {
-			header('Location: http://migracion.fundarlabs.mx/requests/login');
+			if($redirect) {
+				header('Location: http://migracion.fundarlabs.mx/requests/login');
+			}
+			
 			return false;
 		}
 	}
 	
 	public function login() {
-		if($this->isUser()) {
+		if($this->isUserLogin(false)) {
 			header('Location: http://migracion.fundarlabs.mx/requests/index');
 		} else {
 			if(isset($_POST["submit"])) {
