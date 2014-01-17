@@ -24,7 +24,7 @@ a:hover
 </head>
 <body>
     <div>
-		<form action="" method="">
+		<form action="" method="POST">
 			<p>email: <input type="text" name="email" id="email" /></p>
 			<p>password: <input type="text" name="pwd" id="pwd" /></p>
 			<p>
