@@ -252,6 +252,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function cumplimiento() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -273,6 +274,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function resolutions() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -315,6 +317,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function allegations() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -336,6 +339,7 @@ class Requests extends CI_Controller {
 	
 	
 	public function reviews() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -357,6 +361,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function keywords() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -373,6 +378,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function acts() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -389,6 +395,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function quality() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -404,6 +411,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function categories() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -427,6 +435,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function dependencies() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -452,6 +461,7 @@ class Requests extends CI_Controller {
 	
 	
 	public function organizations() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -475,6 +485,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function areas() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -502,7 +513,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
-	public function users() {
+	public function users() {		
 		if($this->isUser(true, true)) {
 			$admin = true;
 		}
