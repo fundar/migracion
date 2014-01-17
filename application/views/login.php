@@ -28,7 +28,7 @@ a:hover
 			<p>email: <input type="text" name="email" id="email" /></p>
 			<p>password: <input type="text" name="pwd" id="pwd" /></p>
 			<p>
-				<input type="submit" name="email" value="enviar" />
+				<input type="submit" name="submit" value="enviar" />
 			</p>
 		</form>
     </div>
