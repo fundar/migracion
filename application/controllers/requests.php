@@ -88,12 +88,11 @@ class Requests extends CI_Controller {
 		session_unset(); 
 		session_destroy();
 		
-		header('Location: http://migracion.fundarlabs.mx/requests/index');
+		header('Location: http://migracion.fundarlabs.mx/requests/login');
 	}
 	
-	
-	
 	public function index() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -172,6 +171,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function documents($id_request = false) {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -192,6 +192,7 @@ class Requests extends CI_Controller {
 	}
 	
 	public function aditional_information() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
@@ -213,6 +214,7 @@ class Requests extends CI_Controller {
 	
 	
 	public function responses() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('twitter-bootstrap');
