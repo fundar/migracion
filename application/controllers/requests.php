@@ -139,6 +139,7 @@ class Requests extends CI_Controller {
 
 		$crud->callback_before_insert(array($this, 'saveDocument'));
 		$crud->callback_before_insert(array($this, 'getFolioID'));
+		$crud->callback_before_update(array($this, 'updateRequest'));
 		
 		$output = $crud->render();
 
@@ -167,7 +168,14 @@ class Requests extends CI_Controller {
 		
 		$post_array['folio']              = trim($post_array['folio']);
 		$post_array['id']                 = $id;
-		$post_array['id_user']                 = $_SESSION['user_id'];
+		$post_array['id_user']            = $_SESSION['user_id'];
+		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
+		
+		return $post_array;
+	}
+	
+	/*Update request*/
+	public function updateRequest($post_array) {
 		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
 		
 		return $post_array;
