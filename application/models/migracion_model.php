@@ -90,6 +90,18 @@ class migracion_Model extends CI_Model  {
 		}
 	}
 	
+	public function isUser($email = "", $password = "") {
+		$query = $this->db->get_where('users', array('id_user' => $id_user));
+		$row   = $query->row(0);
+		die(var_dump($row));
+		
+		if(isset($row->id_user)) {
+			return $row->id_user;
+		} else {
+			return false;
+		}
+	}
+	
 	/*Find folio*/
 	public function getIDFolio($folio = "") {
 		$query  = $this->db->query("SELECT count(*) as number FROM requests where folio = '" . trim($folio) . "'");

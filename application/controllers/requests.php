@@ -51,7 +51,7 @@ class Requests extends CI_Controller {
 			header('Location: http://migracion.fundarlabs.mx/requests/index');
 		} else {
 			if(isset($_POST["submit"])) {
-				die(var_dump($_POST));
+				die(var_dump(md5('admin')));
 				$_SESSION['user_id'] = 1;
 			}
 			
