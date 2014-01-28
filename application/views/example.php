@@ -29,18 +29,7 @@ a:hover
 </style>
 </head>
 <body>
-	<div>
-		<!--
-		<a href='<?php echo site_url('examples/customers_management')?>'>Customers</a> |
-		<a href='<?php echo site_url('examples/orders_management')?>'>Orders</a> |
-		<a href='<?php echo site_url('examples/products_management')?>'>Products</a> |
-		<a href='<?php echo site_url('examples/offices_management')?>'>Offices</a> | 
-		<a href='<?php echo site_url('examples/employees_management')?>'>Employees</a> |		 
-		<a href='<?php echo site_url('examples/film_management')?>'>Films</a> | 
-		<a href='<?php echo site_url('examples/film_management_twitter_bootstrap')?>'>Twitter Bootstrap Theme [BETA]</a> | 
-		<a href='<?php echo site_url('examples/multigrids')?>'>Multigrid [BETA]</a>
-		-->
-		
+	<div>		
 		<a href='<?php echo site_url('requests/index')?>'>Solicitudes</a> |
 		<a href='<?php echo site_url('requests/aditional_information')?>'>Informaci&oacute;n Adicional</a> |
 		<a href='<?php echo site_url('requests/responses')?>'>Respuestas</a> |
@@ -54,7 +43,7 @@ a:hover
 		<a href='<?php echo site_url('requests/keywords')?>'>Keywords</a> |
 		<a href='<?php echo site_url('requests/quality')?>'>Calidad de respuestas</a> |
 		<a href='<?php echo site_url('requests/acts')?>'>Actos que se recurren</a> |
-		<!-- <a href='<?php echo site_url('requests/documents')?>'>Documentos</a> | -->
+		<a href='<?php echo site_url('requests/documents_types')?>'>Tipo de documentos</a> |
 		<a href='<?php echo site_url('requests/categories')?>'>Categor&iacute;as</a> |
 		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencias</a>
 		

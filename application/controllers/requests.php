@@ -202,6 +202,20 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	public function documents_types() {
+		$user = $this->isUser();
+		$crud = new grocery_CRUD();
+		
+		$crud->set_table('documents_types');
+		$crud->set_subject('Tipos de documentos');
+		
+		$crud->fields('name');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	
 	public function aditional_information() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
