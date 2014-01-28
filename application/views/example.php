@@ -43,7 +43,7 @@ a:hover
 		<a href='<?php echo site_url('requests/keywords')?>'>Keywords</a> |
 		<a href='<?php echo site_url('requests/quality')?>'>Calidad de respuestas</a> |
 		<a href='<?php echo site_url('requests/acts')?>'>Actos que se recurren</a> |
-		<a href='<?php echo site_url('requests/documents_types')?>'>Tipo de documentos</a> |
+		<a href='<?php echo site_url('requests/documents_types')?>'>Tipos de documentos</a> |
 		<a href='<?php echo site_url('requests/categories')?>'>Categor&iacute;as</a> |
 		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencias</a>
 		
