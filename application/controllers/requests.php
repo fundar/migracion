@@ -206,6 +206,8 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
+		$crud->set_theme('twitter-bootstrap');
+		
 		$crud->set_table('documents_types');
 		$crud->set_subject('Tipos de documentos');
 		
