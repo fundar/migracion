@@ -326,16 +326,23 @@ class Requests extends CI_Controller {
 		
 		$crud->change_field_type('id_document','invisible');
 		
-		$crud->display_as('file_url', 'Document');
+		$crud->display_as('date_notification', 'Fecha de notificación');
+		$crud->display_as('date', 'Fecha');
+		$crud->display_as('resource_number', 'Numero del recurso');
+		
+		$crud->display_as('file_url', 'Documento');
 		$crud->set_field_upload('file_url','assets/uploads/files');
 		
-		$crud->display_as('id_request', 'Request');
+		$crud->display_as('id_request', 'Solicitud');
 		$crud->set_relation('id_request','requests','name');
 		
 		$crud->display_as('id_type_resolution', 'Sentido de la resolución');
 		$crud->set_relation('id_type_resolution','resolutions_type', 'name');
 		
 		$crud->callback_before_insert(array($this, 'saveResolution'));
+		
+		/*callback para obtener la url de la solicitud*/
+		$crud->callback_column($this->unique_field_name('id_request'), array($this, 'urlRequest'));
 		
 		$output = $crud->render();
 
