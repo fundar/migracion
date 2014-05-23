@@ -258,7 +258,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('responses');
 		$crud->set_subject('Responses');
@@ -285,12 +285,20 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_type_answer', 'Tipo de Respuesta');
 		$crud->set_relation('id_type_answer','answers_types','name');
 		
+		/*callback para obtener la url de la solicitud*/
+		$crud->callback_column($this->unique_field_name('id_request'), array($this, 'urlRequest'));
 		
 		$output = $crud->render();
 
 		$this->_example_output($output);
 	}
 	
+	/*obtener url de la soliicutd*/
+	function urlRequest($value, $row) {
+		return "<a href='".site_url('requests/index/read/'.$row->id_request)."'>$value</a>";
+	}	
+	
+	/*Cumplimiento*/
 	public function cumplimiento() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
