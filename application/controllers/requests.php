@@ -150,7 +150,7 @@ class Requests extends CI_Controller {
 		
 			
 		/*callback para obtener la url de la solicitud*/
-		$crud->callback_column($this->unique_field_name('id_dependecy'), array($this, 'urlDependency'));
+		//$crud->callback_column($this->unique_field_name('id_dependecy'), array($this, 'urlDependency'));
 	
 		$output = $crud->render();
 
