@@ -95,6 +95,7 @@ class Requests extends CI_Controller {
 		header('Location: http://migracion.fundarlabs.mx/requests/login');
 	}
 	
+	/*solicitudes*/
 	public function index() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -152,6 +153,8 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	
+	/*función para guardar documento*/
 	function saveDocument($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
@@ -187,6 +190,8 @@ class Requests extends CI_Controller {
 		return $post_array;
 	}
 	
+	
+	/*metodo de documentos*/
 	public function documents($id_request = false) {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -208,6 +213,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*tipos de documentos*/
 	public function documents_types() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -247,6 +253,7 @@ class Requests extends CI_Controller {
 	}
 	*/
 	
+	/*Respuestas*/
 	public function responses() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -262,19 +269,20 @@ class Requests extends CI_Controller {
 		
 		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
 		
-		
-		$crud->display_as('id_request', 'Request');
+		$crud->display_as('information_delivery', 'Entrega de información');
+		$crud->display_as('answer', 'Respuesta');
+		$crud->display_as('id_request', 'Solicitud');
 		$crud->set_relation('id_request','requests','name');
 		
-		$crud->display_as('id_quality', 'Quality');
+		$crud->display_as('id_quality', 'Calidad');
 		$crud->set_relation_n_n('id_quality', 'responses2quality', 'quality', 'id_response', 'id_quality', 'name');
 		
-		$crud->display_as('id_type_document', 'Type Document');
+		$crud->display_as('id_type_document', 'Tipo de documento');
 		$crud->set_relation_n_n('id_type_document', 'responses2documentstypes', 'documents_types', 'id_response', 'id_type_document', 'name');
 		 
 		//$crud->set_relation('id_type_document','documents_types','name');
 		
-		$crud->display_as('id_type_answer', 'Type Answer');
+		$crud->display_as('id_type_answer', 'Tipo de Respuesta');
 		$crud->set_relation('id_type_answer','answers_types','name');
 		
 		
