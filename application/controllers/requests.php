@@ -148,7 +148,6 @@ class Requests extends CI_Controller {
 		$crud->callback_before_insert(array($this, 'getFolioID'));
 		$crud->callback_before_update(array($this, 'updateRequest'));
 		
-			
 		/*callback para obtener la url de la solicitud*/
 		//$crud->callback_column($this->unique_field_name('id_dependecy'), array($this, 'urlDependency'));
 	
@@ -358,8 +357,7 @@ class Requests extends CI_Controller {
 		return $post_array;
 	}
 	
-	
-	/*revisiones*/
+	/*Recursos de revisión*/
 	public function reviews() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -371,11 +369,16 @@ class Requests extends CI_Controller {
 		
 		$crud->fields('id_request', 'date', 'date_limit', 'id_act');
 		
-		$crud->display_as('id_request', 'Request');
+		$crud->display_as('date', 'Fecha');
+		$crud->display_as('date_limit', 'Fecha limite');
+		$crud->display_as('id_request', 'Solicitud');
 		$crud->set_relation('id_request','requests','name');
 		
 		$crud->display_as('id_act', 'Acto que se recurrió');
 		$crud->set_relation_n_n('id_act', 'acts2reviews', 'turn_acts', 'id_review', 'id_act', 'name');
+		
+		/*callback para obtener la url de la solicitud*/
+		$crud->callback_column($this->unique_field_name('id_request'), array($this, 'urlRequest'));
 		
 		$output = $crud->render();
 
