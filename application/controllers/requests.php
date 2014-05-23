@@ -148,11 +148,19 @@ class Requests extends CI_Controller {
 		$crud->callback_before_insert(array($this, 'getFolioID'));
 		$crud->callback_before_update(array($this, 'updateRequest'));
 		
+			
+		/*callback para obtener la url de la solicitud*/
+		$crud->callback_column($this->unique_field_name('id_dependecy'), array($this, 'urlDependency'));
+	
 		$output = $crud->render();
 
 		$this->_example_output($output);
 	}
 	
+	/*obtener url de la dependencia*/
+	function urlDependency($value, $row) {
+		return "<a href='".site_url('requests/index/read/'.$row->id_dependecy)."'>$value</a>";
+	}	
 	
 	/*función para guardar documento*/
 	function saveDocument($post_array) {
