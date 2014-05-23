@@ -104,7 +104,7 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Requests');
 		
-		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
+		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
 		$crud->fields('id', 'name', 'id_user', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
 		$crud->order_by('date_last_modified','desc');
 		   
