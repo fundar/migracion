@@ -232,6 +232,8 @@ class Requests extends CI_Controller {
 		
 		$crud->fields('name');
 		
+		$crud->display_as('name', 'Nombre');
+		
 		$output = $crud->render();
 
 		$this->_example_output($output);
@@ -406,7 +408,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('keywords');
 
 		$crud->fields('value');
-		$crud->display_as('value', 'Name');
+		$crud->display_as('value', 'Nombre');
 		
 		$output = $crud->render();
 
@@ -444,6 +446,7 @@ class Requests extends CI_Controller {
 
 		$crud->fields('name');
 		
+		$crud->display_as('name', 'Nombre');
 		$output = $crud->render();
 
 		$this->_example_output($output);
@@ -462,6 +465,9 @@ class Requests extends CI_Controller {
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'description');
 		$crud->change_field_type('slug','invisible');
+		
+		$crud->display_as('name', 'Nombre');
+		$crud->display_as('description', 'Descripción');
 		
 		$crud->callback_before_insert(function($post_array) {
 			$post_array['slug'] = slug($post_array['name']);
