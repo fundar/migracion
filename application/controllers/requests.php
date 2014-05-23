@@ -230,29 +230,6 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
-	/* se quito por que no hay mucha información
-	public function aditional_information() {
-		$user = $this->isUser();
-		$crud = new grocery_CRUD();
-		
-		$crud->set_theme('twitter-bootstrap');
-		
-		$crud->set_table('aditional_information');
-		$crud->set_subject('Aditional information');
-		
-		$crud->unset_columns('slug');
-		
-		$crud->fields('id_request', 'date_request', 'request', 'response', 'date_response', 'date_limit');
-		
-		$crud->display_as('id_request', 'Request');
-		$crud->set_relation('id_request','requests','name');
-		
-		$output = $crud->render();
-
-		$this->_example_output($output);
-	}
-	*/
-	
 	/*Respuestas*/
 	public function responses() {
 		$user = $this->isUser();
@@ -326,6 +303,8 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	
+	/*Resoluciones*/
 	public function resolutions() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -356,6 +335,8 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	
+	/*guardar documento de resolución*/
 	function saveResolution($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
@@ -369,29 +350,8 @@ class Requests extends CI_Controller {
 		return $post_array;
 	}
 	
-	/* se quito por que no hay mucha información
-	public function allegations() {
-		$user = $this->isUser();
-		$crud = new grocery_CRUD();
-		
-		$crud->set_theme('twitter-bootstrap');
-		
-		$crud->set_table('allegations');
-		$crud->set_subject('Allegations');
-		
-		$crud->fields('id_request', 'allegation', 'description', 'date');
-		
-		$crud->display_as('id_request', 'Request');
-		$crud->set_relation('id_request','requests','name');
-		
-		$crud->display_as('description', '¿A qué ponencia fue enviada?');
-		
-		$output = $crud->render();
-
-		$this->_example_output($output);
-	}
-	*/
 	
+	/*revisiones*/
 	public function reviews() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -414,6 +374,8 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	
+	/*palabras clave*/
 	public function keywords() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -431,6 +393,8 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	
+	/*actos que se recurren*/
 	public function acts() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -448,6 +412,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*clidad de respuestas*/
 	public function quality() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -464,6 +429,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*categorias*/
 	public function categories() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -488,6 +454,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*dependencias - solo admins*/
 	public function dependencies() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -514,6 +481,7 @@ class Requests extends CI_Controller {
 	}
 	
 	
+	/*organizaciones - solo admins*/
 	public function organizations() {
 		if($this->isUser(true, true)) {
 			$admin = true;
@@ -541,6 +509,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*areas de una organización - solo admins*/
 	public function areas() {
 		if($this->isUser(true, true)) {
 			$admin = true;
@@ -573,6 +542,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/*usuarios - solo admins*/
 	public function users() {		
 		if($this->isUser(true, true)) {
 			$admin = true;
@@ -630,6 +600,53 @@ class Requests extends CI_Controller {
 			
 		//insert keywords - relation
 		$id_document = $this->migracion_model->keywords();
+	}
+	*/
+	
+		
+	/* se quito por que no hay mucha información
+	public function aditional_information() {
+		$user = $this->isUser();
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('aditional_information');
+		$crud->set_subject('Aditional information');
+		
+		$crud->unset_columns('slug');
+		
+		$crud->fields('id_request', 'date_request', 'request', 'response', 'date_response', 'date_limit');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
+	}
+	*/
+	
+	/* se quito por que no hay mucha información
+	public function allegations() {
+		$user = $this->isUser();
+		$crud = new grocery_CRUD();
+		
+		$crud->set_theme('twitter-bootstrap');
+		
+		$crud->set_table('allegations');
+		$crud->set_subject('Allegations');
+		
+		$crud->fields('id_request', 'allegation', 'description', 'date');
+		
+		$crud->display_as('id_request', 'Request');
+		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('description', '¿A qué ponencia fue enviada?');
+		
+		$output = $crud->render();
+
+		$this->_example_output($output);
 	}
 	*/
 }
