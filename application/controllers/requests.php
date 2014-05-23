@@ -467,7 +467,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('dependencies');
 		$crud->set_subject('Dependencies');
