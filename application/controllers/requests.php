@@ -495,6 +495,12 @@ class Requests extends CI_Controller {
 		$crud->change_field_type('slug','invisible');
 		$crud->field_type('type', 'dropdown', array('federal' => 'Federal', 'estatal' => 'Estatal', 'municipal' => 'Municipal'));
 		
+		$crud->display_as('name', 'Nombre');
+		$crud->display_as('description', 'Descripción');
+		$crud->display_as('short_name', 'Nombre corto');
+		$crud->display_as('address', 'Domicilio');
+		$crud->display_as('type', 'Tipo');
+		
 		$crud->callback_before_insert(function($post_array) {
 			$post_array['slug'] = slug($post_array['name']);
 			
@@ -523,6 +529,14 @@ class Requests extends CI_Controller {
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'short_name', 'description', 'address', 'email', 'telephone', 'website');
 		$crud->change_field_type('slug','invisible');
+		
+		
+		$crud->display_as('name', 'Nombre');
+		$crud->display_as('description', 'Descripción');
+		$crud->display_as('short_name', 'Nombre corto');
+		$crud->display_as('address', 'Domicilio');
+		$crud->display_as('telephone', 'Teléfono');
+		$crud->display_as('website', 'Sitio web');
 		
 		$crud->callback_before_insert(function($post_array) {
 			$post_array['slug'] = slug($post_array['name']);
