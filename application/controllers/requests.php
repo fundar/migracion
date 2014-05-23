@@ -114,27 +114,27 @@ class Requests extends CI_Controller {
 		$crud->change_field_type('date_last_modified','invisible');
 		$crud->change_field_type('id_user','invisible');
 		
-		$crud->display_as('file_url', 'Document');
+		$crud->display_as('file_url', 'Documento');
 		$crud->set_field_upload('file_url','assets/uploads/files');
 		
 		$action = $this->uri->segment(3);
 		
-		$crud->display_as('name', 'Title');
-		$crud->display_as('description', 'Summary');
+		$crud->display_as('name', 'Título');
+		$crud->display_as('description', 'Resumen');
 		
-		$crud->display_as('id_category', 'Category');
+		$crud->display_as('id_category', 'Categoría');
 		$crud->set_relation('id_category','categories','name');
 		
-		$crud->display_as('id_dependecy', 'Dependecy');
+		$crud->display_as('id_dependecy', 'Dependencia');
 		$crud->set_relation('id_dependecy', 'dependencies', 'name');
 		
-		$crud->display_as('id_organization', 'Organization');
+		$crud->display_as('id_organization', 'Organización');
 		$crud->set_relation('id_organization', 'organizations', 'name');
 		
 		$crud->required_fields('name', 'folio', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
 		
 		//keywords relations
-		$crud->display_as('id_keyword', 'Keywords');
+		$crud->display_as('id_keyword', 'Palabras clave');
 		$crud->set_relation_n_n('id_keyword', 'keywords2requests', 'keywords', 'id_request', 'id_keyword', 'value');
 
 		$crud->callback_before_insert(array($this, 'saveDocument'));

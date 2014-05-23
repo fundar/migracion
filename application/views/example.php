@@ -40,7 +40,7 @@ a:hover
 		
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
-		<a href='<?php echo site_url('requests/keywords')?>'>Keywords</a> |
+		<a href='<?php echo site_url('requests/keywords')?>'>Palabras clave</a> |
 		<a href='<?php echo site_url('requests/quality')?>'>Calidad de respuestas</a> |
 		<a href='<?php echo site_url('requests/acts')?>'>Actos que se recurren</a> |
 		<a href='<?php echo site_url('requests/documents_types')?>'>Tipos de documentos</a> |
@@ -57,11 +57,11 @@ a:hover
 		<?php } ?>
 		
 		<?php if(isset($_SESSION['admin'])) { ?>
-			| <a href='<?php echo site_url('requests/users')?>'>Users</a>
+			| <a href='<?php echo site_url('requests/users')?>'>Usuarios</a>
 		<?php } ?>
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
-			| <a href='<?php echo site_url('requests/logout')?>'>Logout</a>
+			| <a href='<?php echo site_url('requests/logout')?>'>Cerrar sesión</a>
 		<?php } ?>
 	</div>
 	<div style='height:20px;'></div>  
