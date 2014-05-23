@@ -299,11 +299,13 @@ class Requests extends CI_Controller {
 		
 		$crud->fields('id_request', 'status', 'date', 'description');
 		
-		$crud->display_as('id_request', 'Request');
+		$crud->display_as('date', 'Fecha');
+		$crud->display_as('description', 'Descripçión');
+		$crud->display_as('id_request', 'Solicitud');
 		$crud->set_relation('id_request','requests','name');
 		
 		$crud->display_as('status', 'Se Cumplio');
-		$crud->field_type('status', 'dropdown', array(1 => 'Yes', 2 => 'No'));
+		$crud->field_type('status', 'dropdown', array(1 => 'Si', 2 => 'No'));
 
 		$output = $crud->render();
 
