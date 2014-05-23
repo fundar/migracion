@@ -159,7 +159,7 @@ class Requests extends CI_Controller {
 	
 	/*obtener url de la dependencia*/
 	function urlDependency($value, $row) {
-		return "<a href='".site_url('requests/index/read/'.$row->id_dependecy)."'>$value</a>";
+		return "<a href='".site_url('requests/dependencies/read/'.$row->id_dependecy)."'>$value</a>";
 	}	
 	
 	/*función para guardar documento*/
