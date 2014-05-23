@@ -31,10 +31,10 @@ a:hover
 <body>
 	<div>		
 		<a href='<?php echo site_url('requests/index')?>'>Solicitudes</a> |
-		<a href='<?php echo site_url('requests/aditional_information')?>'>Informaci&oacute;n Adicional</a> |
+		<!-- <a href='<?php echo site_url('requests/aditional_information')?>'>Informaci&oacute;n Adicional</a> | -->
 		<a href='<?php echo site_url('requests/responses')?>'>Respuestas</a> |
 		<a href='<?php echo site_url('requests/reviews')?>'>Recursos de revisión</a> |
-		<a href='<?php echo site_url('requests/allegations')?>'>Alegatos</a> |
+		<!-- <a href='<?php echo site_url('requests/allegations')?>'>Alegatos</a> | -->
 		<a href='<?php echo site_url('requests/resolutions')?>'>Resoluciones</a> |
 		<a href='<?php echo site_url('requests/cumplimiento')?>'>Cumplimiento</a>
 		

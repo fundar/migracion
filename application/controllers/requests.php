@@ -19,7 +19,7 @@ class Requests extends CI_Controller {
 	}
 
 	public function _example_output($output = null) {
-		$this->load->view('example.php',$output);
+		$this->load->view('example.php', $output);
 	}
 	
 	/*Users*/
@@ -218,6 +218,7 @@ class Requests extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	/* se quito por que no hay mucha información
 	public function aditional_information() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -238,7 +239,7 @@ class Requests extends CI_Controller {
 
 		$this->_example_output($output);
 	}
-	
+	*/
 	
 	public function responses() {
 		$user = $this->isUser();
@@ -249,14 +250,12 @@ class Requests extends CI_Controller {
 		$crud->set_table('responses');
 		$crud->set_subject('Responses');
 		
-		$crud->unset_columns('slug');
+		$crud->unset_columns('slug', 'process_ifai');
 		
-		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'process_ifai');
+		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery');
 		
 		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
 		
-		$crud->display_as('process_ifai', 'Con proceso ante IFAI u órgano garante');
-		$crud->field_type('process_ifai', 'dropdown', array(1 => 'Proceso', 2 => 'Concluido'));
 		
 		$crud->display_as('id_request', 'Request');
 		$crud->set_relation('id_request','requests','name');
@@ -343,6 +342,7 @@ class Requests extends CI_Controller {
 		return $post_array;
 	}
 	
+	/* se quito por que no hay mucha información
 	public function allegations() {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
@@ -363,7 +363,7 @@ class Requests extends CI_Controller {
 
 		$this->_example_output($output);
 	}
-	
+	*/
 	
 	public function reviews() {
 		$user = $this->isUser();
