@@ -298,6 +298,11 @@ class Requests extends CI_Controller {
 		return "<a href='".site_url('requests/index/read/'.$row->id_request)."'>$value</a>";
 	}	
 	
+	/*obtener nombre unico de un campo*/
+	function unique_field_name($field_name) {
+		return 's'.substr(md5($field_name),0,8); //This s is because is better for a string to begin with a letter and not with a number
+    }
+    
 	/*Cumplimiento*/
 	public function cumplimiento() {
 		$user = $this->isUser();
