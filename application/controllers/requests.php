@@ -102,7 +102,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('twitter-bootstrap');
 			
 		$crud->set_table('requests');
-		$crud->set_subject('Requests');
+		$crud->set_subject('Solicitudes');
 		
 		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
 		$crud->fields('id', 'name', 'id_user', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
@@ -119,6 +119,7 @@ class Requests extends CI_Controller {
 		
 		$action = $this->uri->segment(3);
 		
+		$crud->display_as('short_name', 'Nombre corto');
 		$crud->display_as('question', 'Pregunta');
 		$crud->display_as('description', 'Descripción');
 		$crud->display_as('date_published', 'Fecha publicada');
