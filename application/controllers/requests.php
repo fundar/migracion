@@ -119,6 +119,11 @@ class Requests extends CI_Controller {
 		
 		$action = $this->uri->segment(3);
 		
+		$crud->display_as('question', 'Pregunta');
+		$crud->display_as('description', 'Descripción');
+		$crud->display_as('date_published', 'Fecha publicada');
+		$crud->display_as('date_limit', 'Fecha límite');
+		
 		$crud->display_as('name', 'Título');
 		$crud->display_as('description', 'Resumen');
 		
