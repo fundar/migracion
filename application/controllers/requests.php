@@ -145,7 +145,7 @@ class Requests extends CI_Controller {
 
 		$crud->callback_before_insert(array($this, 'saveDocument'));
 		$crud->callback_before_insert(array($this, 'getFolioID'));
-		$crud->callback_before_update(array($this, 'updateRequest'));
+		//$crud->callback_before_update(array($this, 'updateRequest'));
 		
 		/*callback para obtener la url de la solicitud*/
 		//$crud->callback_column($this->unique_field_name('id_dependecy'), array($this, 'urlDependency'));
@@ -192,7 +192,7 @@ class Requests extends CI_Controller {
 	/*Update request*/
 	public function updateRequest($post_array) {
 		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
-		die(var_dump($post_array));
+		
 		return $post_array;
 	}
 	
