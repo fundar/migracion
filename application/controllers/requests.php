@@ -15,7 +15,7 @@ class Requests extends CI_Controller {
 		
 		$this->load->library('grocery_CRUD');
 		
-		//session_start();
+		session_start();
 	}
 
 	public function _example_output($output = null) {
