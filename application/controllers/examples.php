@@ -10,6 +10,7 @@ class Examples extends CI_Controller {
 		$this->load->helper('url');
 
 		$this->load->library('grocery_CRUD');
+		session_start();
 	}
 
 	public function _example_output($output = null)
