@@ -19,11 +19,12 @@ class migracion_Model extends CI_Model  {
 			"date_create" => date('Y-m-d H:i:s'),
 			"file_url"    => $post_array["id_document"]
 		);
-	 
+		
+		die("sad");
 		$this->db->insert('documents', $document_insert);
 		$id_document = $this->db->insert_id();
 		
-		die("sad");
+		
 		//Save keyword document
 		foreach($post_array["keywords"] as $keyword) {
 			$keyword_insert = array(
@@ -39,6 +40,7 @@ class migracion_Model extends CI_Model  {
 	
 	public function saveDocument($post_array) {
 		//Save document
+		die("sad");
 		$document_insert = array(
 			"name"        => $post_array["name"],
 			"short_name"  => $post_array["short_name"],
@@ -67,6 +69,7 @@ class migracion_Model extends CI_Model  {
 	}
 	
 	public function getUrlDocument($id_document) {
+		die("sad");
 		$query = $this->db->get_where('documents', array('id_document' => $id_document));
 		$row   = $query->row(0);
 		
