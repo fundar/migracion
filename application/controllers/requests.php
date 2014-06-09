@@ -151,7 +151,7 @@ class Requests extends CI_Controller {
 		//$crud->callback_column($this->unique_field_name('id_dependecy'), array($this, 'urlDependency'));
 	
 		$output = $crud->render();
-
+		
 		$this->_example_output($output);
 	}
 	
@@ -192,7 +192,7 @@ class Requests extends CI_Controller {
 	/*Update request*/
 	public function updateRequest($post_array) {
 		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
-		
+		die(var_dump($post_array));
 		return $post_array;
 	}
 	
