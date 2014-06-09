@@ -19,8 +19,7 @@ class migracion_Model extends CI_Model  {
 			"date_create" => date('Y-m-d H:i:s'),
 			"file_url"    => $post_array["id_document"]
 		);
-		
-		die("sad");
+	 
 		$this->db->insert('documents', $document_insert);
 		$id_document = $this->db->insert_id();
 		
@@ -40,7 +39,6 @@ class migracion_Model extends CI_Model  {
 	
 	public function saveDocument($post_array) {
 		//Save document
-		die("sad");
 		$document_insert = array(
 			"name"        => $post_array["name"],
 			"short_name"  => $post_array["short_name"],
@@ -69,7 +67,6 @@ class migracion_Model extends CI_Model  {
 	}
 	
 	public function getUrlDocument($id_document) {
-		die("sad");
 		$query = $this->db->get_where('documents', array('id_document' => $id_document));
 		$row   = $query->row(0);
 		
@@ -114,7 +111,7 @@ class migracion_Model extends CI_Model  {
 	}
 	
 	
-	/* cambio de estructura de keywords a la tabla de relación
+	/* cambio de estructura de keywords a la tabla de relación*/
 	public function keywords() {
 		$this->db->select('id_request, keywords');
 		$requests = $this->db->get("requests");
@@ -136,5 +133,4 @@ class migracion_Model extends CI_Model  {
 		
 		die("Ok");
 	}
-	*/
 }
