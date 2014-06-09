@@ -100,7 +100,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		$crud->set_table('requests');
 		$crud->set_subject('Solicitudes');
 		
@@ -156,12 +156,12 @@ class Requests extends CI_Controller {
 	}
 	
 	/*obtener url de la dependencia*/
-	function urlDependency($value, $row) {
+	public function urlDependency($value, $row) {
 		return "<a href='".site_url('requests/dependencies/read/'.$row->id_dependecy)."'>$value</a>";
 	}	
 	
 	/*función para guardar documento*/
-	function saveDocument($post_array) {
+	public function saveDocument($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
 			
@@ -279,12 +279,12 @@ class Requests extends CI_Controller {
 	}
 	
 	/*obtener url de la soliicutd*/
-	function urlRequest($value, $row) {
+	public function urlRequest($value, $row) {
 		return "<a href='".site_url('requests/index/read/'.$row->id_request)."'>$value</a>";
 	}	
 	
 	/*obtener nombre unico de un campo*/
-	function unique_field_name($field_name) {
+	public function unique_field_name($field_name) {
 		return 's'.substr(md5($field_name),0,8); //This s is because is better for a string to begin with a letter and not with a number
     }
     
@@ -354,7 +354,7 @@ class Requests extends CI_Controller {
 	
 	
 	/*guardar documento de resolución*/
-	function saveResolution($post_array) {
+	public function saveResolution($post_array) {
 		if(isset($post_array['id_document']) and $post_array['id_document'] != "") {
 			$this->load->model('migracion_model');
 			
