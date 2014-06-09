@@ -4,6 +4,7 @@ class migracion_Model extends CI_Model  {
 	function __construct() {
 		parent::__construct();
 		$this->load->database();
+		die("sad");
 	}
 
 	public function get_keywords($table = "keywords") {

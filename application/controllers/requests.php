@@ -190,7 +190,7 @@ class Requests extends CI_Controller {
 	}
 	
 	/*Update request*/
-	public function updateRequest($post_array) {
+	function updateRequest($post_array) {
 		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
 		
 		return $post_array;
