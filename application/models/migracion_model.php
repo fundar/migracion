@@ -102,7 +102,6 @@ class migracion_Model extends CI_Model  {
 	
 	/*Find folio*/
 	public function getIDFolio($folio = "") {
-		die("golios");
 		$query  = $this->db->query("SELECT count(*) as number FROM requests where folio = '" . trim($folio) . "'");
 		$row    = $query->row(0);	
 		$number = $row->number + 1;
@@ -131,7 +130,5 @@ class migracion_Model extends CI_Model  {
 			}
 			
 		}
-		
-		die("Ok");
 	}
 }
