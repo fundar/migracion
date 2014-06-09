@@ -4,7 +4,6 @@ class migracion_Model extends CI_Model  {
 	function __construct() {
 		parent::__construct();
 		$this->load->database();
-		die("sad");
 	}
 
 	public function get_keywords($table = "keywords") {
@@ -24,7 +23,7 @@ class migracion_Model extends CI_Model  {
 		$this->db->insert('documents', $document_insert);
 		$id_document = $this->db->insert_id();
 		
-		
+		die("sad");
 		//Save keyword document
 		foreach($post_array["keywords"] as $keyword) {
 			$keyword_insert = array(
