@@ -101,7 +101,6 @@ class Requests extends CI_Controller {
 		$crud = new grocery_CRUD();
 		
 		$crud->set_theme('datatables');
-			
 		$crud->set_table('requests');
 		$crud->set_subject('Solicitudes');
 		
