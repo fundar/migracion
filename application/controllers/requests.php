@@ -202,7 +202,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('documents');
 		$crud->set_subject('Documents');
@@ -224,7 +224,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('documents_types');
 		$crud->set_subject('Tipos de documentos');
@@ -293,7 +293,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('cumplimiento');
 		$crud->set_subject('Cumplimiento');
@@ -319,7 +319,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('resolutions');
 		$crud->set_subject('Resolutions');
@@ -372,7 +372,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('reviews');
 		$crud->set_subject('Reviews');
@@ -401,7 +401,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('keywords');
 		$crud->set_subject('keywords');
@@ -420,7 +420,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('turn_acts');
 		$crud->set_subject('Acto que se recurre');
@@ -438,7 +438,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('quality');
 		$crud->set_subject('Quality');
@@ -456,7 +456,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('categories');
 		$crud->set_subject('Categories');
@@ -520,7 +520,7 @@ class Requests extends CI_Controller {
 		
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('organizations');
 		$crud->set_subject('Organizations');
@@ -556,7 +556,7 @@ class Requests extends CI_Controller {
 		
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('areas');
 		$crud->set_subject('Areas');
@@ -589,7 +589,7 @@ class Requests extends CI_Controller {
 		
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('twitter-bootstrap');
+		$crud->set_theme('datatables');
 		
 		$crud->set_table('users');
 		$crud->set_subject('users');
