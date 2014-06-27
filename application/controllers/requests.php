@@ -298,12 +298,15 @@ class Requests extends CI_Controller {
 		$crud->set_table('cumplimiento');
 		$crud->set_subject('Cumplimiento');
 		
-		$crud->fields('id_request', 'status', 'date', 'description');
+		$crud->fields('id_request', 'status', 'date', 'description', 'file_url');
 		
 		$crud->display_as('date', 'Fecha');
 		$crud->display_as('description', 'Descripçión');
 		$crud->display_as('id_request', 'Solicitud');
 		$crud->set_relation('id_request','requests','name');
+		
+		$crud->display_as('file_url', 'Documento');
+		$crud->set_field_upload('file_url','assets/uploads/files');
 		
 		$crud->display_as('status', 'Se Cumplio');
 		$crud->field_type('status', 'dropdown', array(1 => 'Si', 2 => 'No'));
