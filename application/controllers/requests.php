@@ -170,8 +170,6 @@ class Requests extends CI_Controller {
 			
 			$post_array['id_document'] = $id_document;
 		}
-
-		$post_array['slug']     = slug($post_array['name']);
 		
 		return $post_array;
 	}
@@ -185,6 +183,7 @@ class Requests extends CI_Controller {
 		$post_array['id']                 = $id;
 		$post_array['id_user']            = $_SESSION['user_id'];
 		$post_array['date_last_modified'] = date("Y-m-d H:i:s", time());
+		$post_array['slug']     		  = slug($post_array['name']);
 		
 		return $post_array;
 	}
