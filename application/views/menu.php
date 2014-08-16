@@ -51,7 +51,7 @@
 	<?php if(isset($_SESSION['admin'])) { ?>
 		<a href="<?php echo site_url('requests/users')?>">
 			<?php if($this->uri->segment(2) == "users") { ?><strong>Usuarios</strong><?php } else { ?>Usuarios<?php } ?>
-		</a> |
+		</a>
 	<?php } ?>
 	
 	<?php if(isset($_SESSION['user_id'])) { ?>
