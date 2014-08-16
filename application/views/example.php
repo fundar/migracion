@@ -29,44 +29,12 @@ a:hover
 </style>
 </head>
 <body>
-	<div>		
-		<a href='<?php echo site_url('requests/index')?>'>Solicitudes</a> |
-		<!-- <a href='<?php echo site_url('requests/aditional_information')?>'>Informaci&oacute;n Adicional</a> | -->
-		<a href='<?php echo site_url('requests/responses')?>'>Respuestas</a> |
-		<a href='<?php echo site_url('requests/reviews')?>'>Recursos de revisión</a> |
-		<!-- <a href='<?php echo site_url('requests/allegations')?>'>Alegatos</a> | -->
-		<a href='<?php echo site_url('requests/resolutions')?>'>Resoluciones</a> |
-		<a href='<?php echo site_url('requests/cumplimiento')?>'>Cumplimiento</a>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		<a href='<?php echo site_url('requests/keywords')?>'>Palabras clave</a> |
-		<a href='<?php echo site_url('requests/quality')?>'>Calidad de respuestas</a> |
-		<a href='<?php echo site_url('requests/acts')?>'>Actos que se recurren</a> |
-		<a href='<?php echo site_url('requests/documents_types')?>'>Tipos de documentos</a> |
-		<a href='<?php echo site_url('requests/categories')?>'>Categor&iacute;as</a> |
-		<a href='<?php echo site_url('requests/dependencies')?>'>Dependencias</a>
-		
-		
-		<?php if(isset($_SESSION['admin'])) { ?>
-			| <a href='<?php echo site_url('requests/organizations')?>'>Organizaciones</a>
-		<?php } ?>
-		
-		<?php if(isset($_SESSION['admin'])) { ?>
-			| <a href='<?php echo site_url('requests/areas')?>'>Areas</a>
-		<?php } ?>
-		
-		<?php if(isset($_SESSION['admin'])) { ?>
-			| <a href='<?php echo site_url('requests/users')?>'>Usuarios</a>
-		<?php } ?>
-		
-		<?php if(isset($_SESSION['user_id'])) { ?>
-			| <a href='<?php echo site_url('requests/logout')?>'>Cerrar sesión</a>
-		<?php } ?>
-	</div>
-	<div style='height:20px;'></div>  
-    <div>
-		<?php echo $output; ?>
+	<div id="container">
+		<?php $this->load->view('menu.php', $output); ?>
+		<div style='height:20px;'></div>  
+		<div>
+			<?php echo $output; ?>
+		</div>
     </div>
 </body>
 </html>
