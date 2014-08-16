@@ -37,15 +37,21 @@
 	</a> |
 		
 	<?php if(isset($_SESSION['admin'])) { ?>
-		| <a href='<?php echo site_url('requests/organizations')?>'>Organizaciones</a>
+		<a href="<?php echo site_url('requests/organizations')?>">
+			<?php if($this->uri->segment(2) == "organizations") { ?><strong>Organizaciones</strong><?php } else { ?>Organizaciones<?php } ?>
+		</a> |
 	<?php } ?>
 	
 	<?php if(isset($_SESSION['admin'])) { ?>
-		| <a href='<?php echo site_url('requests/areas')?>'>Areas</a>
+		<a href="<?php echo site_url('requests/areas')?>">
+			<?php if($this->uri->segment(2) == "areas") { ?><strong>Areas</strong><?php } else { ?>Areas<?php } ?>
+		</a> |
 	<?php } ?>
 	
 	<?php if(isset($_SESSION['admin'])) { ?>
-		| <a href='<?php echo site_url('requests/users')?>'>Usuarios</a>
+		<a href="<?php echo site_url('requests/users')?>">
+			<?php if($this->uri->segment(2) == "users") { ?><strong>Usuarios</strong><?php } else { ?>Usuarios<?php } ?>
+		</a> |
 	<?php } ?>
 	
 	<?php if(isset($_SESSION['user_id'])) { ?>
