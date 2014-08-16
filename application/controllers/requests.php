@@ -379,7 +379,8 @@ class Requests extends CI_Controller {
 		$crud->set_table('reviews');
 		$crud->set_subject('Reviews');
 		
-		$crud->fields('id_request', 'date', 'id_act');
+		$crud->unset_columns('date_limit');
+		$crud->fields('id_request', 'date', 'date_limit', 'id_act');
 		
 		$crud->display_as('date', 'Fecha');
 		$crud->display_as('date_limit', 'Fecha limite');
