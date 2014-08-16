@@ -326,7 +326,7 @@ class Requests extends CI_Controller {
 		$crud->set_table('resolutions');
 		$crud->set_subject('Resolutions');
 		
-		$crud->columns('id_request', 'date_notification', 'date', 'resource_number', 'id_type_resolution', 'file_url');
+		$crud->columns('id_request', 'date', 'resource_number', 'id_type_resolution', 'file_url');
 		$crud->fields('id_request', 'date_notification', 'date', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
 		
 		$crud->change_field_type('id_document','invisible');
@@ -379,7 +379,7 @@ class Requests extends CI_Controller {
 		$crud->set_table('reviews');
 		$crud->set_subject('Reviews');
 		
-		$crud->fields('id_request', 'date', 'date_limit', 'id_act');
+		$crud->fields('id_request', 'date', 'id_act');
 		
 		$crud->display_as('date', 'Fecha');
 		$crud->display_as('date_limit', 'Fecha limite');
