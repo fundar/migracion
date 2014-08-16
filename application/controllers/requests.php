@@ -204,7 +204,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('documents');
-		$crud->set_subject('Documents');
+		$crud->set_subject('Documentos');
 		
 		$crud->fields('name', 'short_name', 'keywords', 'file_url');
 		$crud->change_field_type('slug','invisible');
@@ -245,7 +245,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('responses');
-		$crud->set_subject('Responses');
+		$crud->set_subject('Respuestas');
 		
 		$crud->unset_columns('slug', 'process_ifai');
 		
@@ -324,7 +324,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('resolutions');
-		$crud->set_subject('Resolutions');
+		$crud->set_subject('Resoluciones');
 		
 		$crud->columns('id_request', 'date', 'resource_number', 'id_type_resolution', 'file_url');
 		$crud->fields('id_request', 'date_notification', 'date', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
@@ -377,7 +377,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('reviews');
-		$crud->set_subject('Reviews');
+		$crud->set_subject('Recursos de revisión');
 		
 		$crud->unset_columns('date_limit');
 		$crud->fields('id_request', 'date', 'date_limit', 'id_act');
@@ -595,7 +595,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('users');
-		$crud->set_subject('users');
+		$crud->set_subject('Usuarios');
 		
 		$crud->fields('username', 'pwd', 'email', 'name', 'lastname', 'id_organization', 'id_area', 'type', 'date_create');
 		
