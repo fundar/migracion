@@ -407,7 +407,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('keywords');
-		$crud->set_subject('keywords');
+		$crud->set_subject('Palabras clave');
 
 		$crud->fields('value');
 		$crud->display_as('value', 'Nombre');
@@ -444,7 +444,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('quality');
-		$crud->set_subject('Quality');
+		$crud->set_subject('Calidad de respuestas');
 
 		$crud->fields('name');
 		
@@ -462,7 +462,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('categories');
-		$crud->set_subject('Categories');
+		$crud->set_subject('Categorias');
 		
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'description');
@@ -490,7 +490,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('dependencies');
-		$crud->set_subject('Dependencies');
+		$crud->set_subject('Dependencias');
 		
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'description', 'short_name', 'address', 'type');
@@ -526,7 +526,7 @@ class Requests extends CI_Controller {
 		$crud->set_theme('datatables');
 		
 		$crud->set_table('organizations');
-		$crud->set_subject('Organizations');
+		$crud->set_subject('Organizaciones');
 		
 		$crud->unset_columns('slug');
 		$crud->fields('name', 'slug', 'short_name', 'description', 'address', 'email', 'telephone', 'website');
