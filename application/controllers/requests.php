@@ -122,7 +122,7 @@ class Requests extends CI_Controller {
 		$crud->display_as('short_name', 'Nombre corto');
 		$crud->display_as('question', 'Pregunta');
 		$crud->display_as('description', 'Descripción');
-		$crud->display_as('date_published', 'Fecha de la solicitud"');
+		$crud->display_as('date_published', 'Fecha de la solicitud');
 		$crud->display_as('date_limit', 'Fecha de la respuesta');
 		
 		$crud->display_as('name', 'Título');
