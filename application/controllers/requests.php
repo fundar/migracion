@@ -105,7 +105,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Solicitudes');
 		
 		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
-		$crud->fields('id', 'name', 'id_user', 'short_name', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
+		$crud->fields('id', 'name', 'id_user', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
 		$crud->order_by('date_last_modified','desc');
 		   
 		$crud->change_field_type('slug','invisible');
@@ -122,8 +122,8 @@ class Requests extends CI_Controller {
 		$crud->display_as('short_name', 'Nombre corto');
 		$crud->display_as('question', 'Pregunta');
 		$crud->display_as('description', 'Descripción');
-		$crud->display_as('date_published', 'Fecha publicada');
-		$crud->display_as('date_limit', 'Fecha límite');
+		$crud->display_as('date_published', 'Fecha de la solicitud"');
+		$crud->display_as('date_limit', 'Fecha de la respuesta');
 		
 		$crud->display_as('name', 'Título');
 		$crud->display_as('description', 'Resumen');
@@ -380,10 +380,9 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Recursos de revisión');
 		
 		$crud->unset_columns('date_limit');
-		$crud->fields('id_request', 'date', 'date_limit', 'id_act');
+		$crud->fields('id_request', 'date', 'id_act');
 		
 		$crud->display_as('date', 'Fecha');
-		$crud->display_as('date_limit', 'Fecha limite');
 		$crud->display_as('id_request', 'Solicitud');
 		$crud->set_relation('id_request','requests','name');
 		
