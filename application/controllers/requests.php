@@ -104,8 +104,8 @@ class Requests extends CI_Controller {
 		$crud->set_table('requests');
 		$crud->set_subject('Solicitudes');
 		
-		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published' , 'date_limit', 'id_organization');
-		$crud->fields('id', 'name', 'id_user', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published' , 'date_limit', 'date_last_modified', 'id_organization');
+		$crud->columns('id', 'name', 'folio', 'id_category', 'file_url', 'id_dependecy', 'question', 'description', 'date_published', 'id_organization');
+		$crud->fields('id', 'name', 'id_user', 'slug', 'folio', 'id_category', 'id_document', 'file_url', 'id_dependecy', 'question', 'description', 'id_keyword', 'date_published', 'date_last_modified', 'id_organization');
 		$crud->order_by('date_last_modified','desc');
 		   
 		$crud->change_field_type('slug','invisible');
@@ -123,7 +123,6 @@ class Requests extends CI_Controller {
 		$crud->display_as('question', 'Pregunta');
 		$crud->display_as('description', 'Descripción');
 		$crud->display_as('date_published', 'Fecha de la solicitud');
-		$crud->display_as('date_limit', 'Fecha de la respuesta');
 		
 		$crud->display_as('name', 'Título');
 		$crud->display_as('description', 'Resumen');
@@ -137,7 +136,7 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_organization', 'Organización');
 		$crud->set_relation('id_organization', 'organizations', 'name');
 		
-		$crud->required_fields('name', 'folio', 'id_category', 'id_dependecy', 'description', 'date_published' , 'date_limit');
+		$crud->required_fields('name', 'folio', 'id_category', 'id_dependecy', 'description', 'date_published');
 		
 		//keywords relations
 		$crud->display_as('id_keyword', 'Palabras clave');
@@ -249,10 +248,11 @@ class Requests extends CI_Controller {
 		
 		$crud->unset_columns('slug', 'process_ifai');
 		
-		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery');
+		$crud->fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'date_limit');
 		
 		$crud->field_type('information_delivery', 'dropdown', array(1 => 'Consulta Directa', 2 => ' Formato físico', 3 => 'Formato electrónico'));
 		
+		$crud->display_as('date_limit', 'Fecha de la respuesta');
 		$crud->display_as('information_delivery', 'Entrega de información');
 		$crud->display_as('answer', 'Respuesta');
 		$crud->display_as('id_request', 'Solicitud');

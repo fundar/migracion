@@ -392,7 +392,6 @@ CREATE TABLE `requests` (
   `description` text,
   `keywords` varchar(255) DEFAULT NULL,
   `date_published` date NOT NULL,
-  `date_limit` date DEFAULT NULL,
   `date_last_modified` date DEFAULT NULL,
   `date_answer` date DEFAULT NULL,
   PRIMARY KEY (`id_request`)
@@ -477,6 +476,7 @@ CREATE TABLE `responses` (
   `id_quality` int(11) DEFAULT NULL COMMENT '1 Completa\n2 Legible\n3 Formato Abierto\n\n4 Incompleta\n5 Ilegible\n6 No es lo solicita\n7 En formato no accesible',
   `information_delivery` int(11) NOT NULL DEFAULT '3' COMMENT '1 Consulta directa\n2 Formato fisico\n3 Formato electronico',
   `process_ifai` int(11) NOT NULL DEFAULT '1' COMMENT '1 En proceso\n2 Concluida\n3 No aplica',
+  `date_limit` date DEFAULT NULL,
   PRIMARY KEY (`id_response`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
