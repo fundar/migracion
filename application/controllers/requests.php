@@ -313,6 +313,9 @@ class Requests extends CI_Controller {
 		$crud->display_as('status', 'Se Cumplio');
 		$crud->field_type('status', 'dropdown', array(1 => 'Si', 2 => 'No'));
 
+		//required fields
+		$crud->required_fields('id_request', 'status', 'date', 'description');
+		
 		$output = $crud->render();
 
 		$this->_example_output($output);
