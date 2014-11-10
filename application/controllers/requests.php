@@ -238,7 +238,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('datatables');
+		//$crud->set_theme('datatables');
 		
 		$crud->set_table('responses');
 		$crud->set_subject('Respuestas');
@@ -327,7 +327,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('datatables');
+		//$crud->set_theme('datatables');
 		
 		$crud->set_table('resolutions');
 		$crud->set_subject('Resoluciones');
@@ -382,7 +382,7 @@ class Requests extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		$crud->set_theme('datatables');
+		//$crud->set_theme('datatables');
 		
 		$crud->set_table('reviews');
 		$crud->set_subject('Recursos de revisión');
