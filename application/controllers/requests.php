@@ -133,7 +133,7 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_organization', 'Organización');
 		$crud->set_relation('id_organization', 'organizations', 'name');
 		
-		$crud->required_fields('name', 'folio', 'id_category', 'id_dependecy', 'description', 'date_published');
+		$crud->required_fields('name', 'folio', 'id_category', 'id_dependecy', 'question', 'date_published');
 		
 		//keywords relations
 		$crud->display_as('id_keyword', 'Palabras clave');
@@ -264,6 +264,9 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_type_document', 'Tipo de documento');
 		$crud->set_relation_n_n('id_type_document', 'responses2documentstypes', 'documents_types', 'id_response', 'id_type_document', 'name');
 		 
+		//reuquired fields
+		$crud->required_fields('id_request', 'id_type_document', 'id_type_answer', 'answer', 'id_quality', 'information_delivery', 'date_limit');
+		
 		//$crud->set_relation('id_type_document','documents_types','name');
 		
 		$crud->display_as('id_type_answer', 'Tipo de Respuesta');
@@ -327,7 +330,7 @@ class Requests extends CI_Controller {
 		$crud->set_subject('Resoluciones');
 		
 		$crud->columns('id_request', 'date', 'resource_number', 'id_type_resolution', 'file_url');
-		$crud->fields('id_request', 'date_notification', 'date', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
+		$crud->fields('id_request', 'date', 'resource_number', 'id_type_resolution', 'id_document', 'file_url');
 		
 		$crud->change_field_type('id_document','invisible');
 		
@@ -344,6 +347,8 @@ class Requests extends CI_Controller {
 		$crud->display_as('id_type_resolution', 'Sentido de la resolución');
 		$crud->set_relation('id_type_resolution','resolutions_type', 'name');
 		
+		//required fields
+		$crud->required_fields('id_request', 'date', 'resource_number', 'id_type_resolution');
 		$crud->callback_before_insert(array($this, 'saveResolution'));
 		
 		/*callback para obtener la url de la solicitud*/
@@ -388,6 +393,9 @@ class Requests extends CI_Controller {
 		
 		$crud->display_as('id_act', 'Acto que se recurrió');
 		$crud->set_relation_n_n('id_act', 'acts2reviews', 'turn_acts', 'id_review', 'id_act', 'name');
+		
+		//reuquired fields
+		$crud->required_fields('id_request', 'date', 'id_act');
 		
 		/*callback para obtener la url de la solicitud*/
 		$crud->callback_column($this->unique_field_name('id_request'), array($this, 'urlRequest'));
